@@ -86,6 +86,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB504F202B81292400535FEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CB620D942B74608B000C3778 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +117,7 @@
 		CB620D9F2B74608B000C3778 /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
+				CB504F202B81292400535FEE /* Model */,
 				CB96D0432B74657E00E3210E /* Controller */,
 				CB96D0472B746AA600E3210E /* Vue */,
 				CB620DB12B74608F000C3778 /* Info.plist */,
