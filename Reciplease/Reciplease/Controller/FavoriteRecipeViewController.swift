@@ -11,6 +11,12 @@ class FavoriteRecipeViewController: UIViewController {
 
     @IBOutlet weak var returnButton: UINavigationItem!
     
+    @IBOutlet weak var getDirectionButton: UIButton!
+    @IBOutlet weak var ingredientsListLabel: UILabel!
+    @IBOutlet weak var recipeNameLabel: UILabel!
+    @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var timeToPrepareLabel: UILabel!
+    @IBOutlet weak var numberOfLikesLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         returnButton.titleView?.tintColor = #colorLiteral(red: 0.2, green: 0.8, blue: 0.5, alpha: 1.0)

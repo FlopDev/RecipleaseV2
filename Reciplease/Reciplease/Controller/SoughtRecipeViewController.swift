@@ -9,6 +9,12 @@ import UIKit
 
 class SoughtRecipeViewController: UIViewController {
 
+    @IBOutlet weak var timeToPrepareLabel: UILabel!
+    @IBOutlet weak var numberOfLikesLabel: UILabel!
+    @IBOutlet weak var getDirectionButton: UIButton!
+    @IBOutlet weak var ingredientsListLabel: UILabel!
+    @IBOutlet weak var recipeNameLabel: UILabel!
+    @IBOutlet weak var recipeImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

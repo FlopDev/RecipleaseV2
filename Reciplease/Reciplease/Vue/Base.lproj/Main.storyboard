@@ -163,7 +163,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="getDirectionButton" destination="IB6-PO-VA3" id="8W2-37-EPe"/>
+                        <outlet property="ingredientsListLabel" destination="YCp-EY-NOE" id="jUz-S8-5xU"/>
+                        <outlet property="numberOfLikesLabel" destination="uLL-4w-5az" id="kPx-t2-XIr"/>
+                        <outlet property="recipeImageView" destination="7SL-bY-xhM" id="NUh-9F-6Fy"/>
+                        <outlet property="recipeNameLabel" destination="dl3-3F-qnw" id="mlt-RM-YK8"/>
                         <outlet property="returnButton" destination="FI8-l1-8VB" id="0BV-tQ-gai"/>
+                        <outlet property="timeToPrepareLabel" destination="h1f-zd-gQb" id="evx-q2-pGa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Is7-N5-qTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -292,6 +298,13 @@
                     <navigationItem key="navigationItem" title="Reciplease" id="wEe-YS-ULM">
                         <barButtonItem key="backBarButtonItem" title="Back" id="llZ-xE-PLa"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="5l3-P9-Y77" id="zYS-mX-Jii"/>
+                        <outlet property="clearButton" destination="one-Vp-nWp" id="YUw-QR-TMC"/>
+                        <outlet property="ingredientsListLabel" destination="4ef-cT-kLb" id="NBR-Yu-rWM"/>
+                        <outlet property="searchIngredientTextField" destination="WRA-MH-fuj" id="pGb-xQ-M3K"/>
+                        <outlet property="searchRecipeButton" destination="C0i-Yw-Jvb" id="i1W-hW-pEF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUU-r5-hv6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -354,7 +367,7 @@
         <!--Reciplease-->
         <scene sceneID="kqb-Rf-ccF">
             <objects>
-                <viewController id="Gpe-SR-6GY" sceneMemberID="viewController">
+                <viewController id="Gpe-SR-6GY" customClass="SoughtRecipeViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8aU-W2-M4X">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -430,6 +443,14 @@
                             <color key="tintColor" red="0.24861714239999999" green="0.59005951879999996" blue="0.36496335270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="getDirectionButton" destination="JNC-nT-GcM" id="lGA-SZ-6ZT"/>
+                        <outlet property="ingredientsListLabel" destination="YIu-Dj-ijb" id="E1x-HJ-SXX"/>
+                        <outlet property="numberOfLikesLabel" destination="1Jd-Pb-P0h" id="8AT-0T-yQf"/>
+                        <outlet property="recipeImageView" destination="Vyj-Kd-HAG" id="OnQ-W6-w77"/>
+                        <outlet property="recipeNameLabel" destination="ccy-dA-pKP" id="A2S-YU-1zl"/>
+                        <outlet property="timeToPrepareLabel" destination="CwD-re-yrt" id="src-4q-Hxh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="es9-6c-KDy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

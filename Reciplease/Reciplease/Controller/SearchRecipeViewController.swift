@@ -9,6 +9,11 @@ import UIKit
 
 class SearchRecipeViewController: UIViewController {
 
+    @IBOutlet weak var searchRecipeButton: UIButton!
+    @IBOutlet weak var ingredientsListLabel: UILabel!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var searchIngredientTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
