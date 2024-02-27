@@ -241,6 +241,7 @@
                                     <fontDescription key="titleFontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="21"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="searchForRecipeButton:" destination="ZZZ-nV-n4p" eventType="touchUpInside" id="aN6-LH-34h"/>
                                     <segue destination="1bq-KI-GeG" kind="show" id="eOc-5b-Srx"/>
                                 </connections>
                             </button>

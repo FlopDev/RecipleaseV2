@@ -39,4 +39,24 @@ class API {
                    }
             }
         }
+    func apiCall(ingredient: String) {
+        print("getInFunction")
+        AF.request("https://api.edamam.com/search?q=\(ingredient)&app_id=19dbb1a1&app_key=f606398872ec03bd2037562d3b5d898e").response {  data in
+
+            switch data.result {
+              case .success(let data):
+                do { let responseJSON = try JSONDecoder().decode(RecipeFound.self,from: data!)
+                   self.recipes = responseJSON.hits
+                   let objectWelcome = RecipeFound(q: responseJSON.q, from: responseJSON.from, to: responseJSON.to, more: responseJSON.more, count: responseJSON.count, hits: responseJSON.hits)
+                   print(objectWelcome.hits)
+               } catch {
+                   print("error")
+               }
+               
+              case .failure(let error):
+                  print("Something went wrong: \(error)")
+                //callback(false, nil)
+              }
+       }
+        }
     }

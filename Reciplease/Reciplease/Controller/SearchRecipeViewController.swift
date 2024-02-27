@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchRecipeViewController: UIViewController {
+    
+    let shared = API()
 
     @IBOutlet weak var searchRecipeButton: UIButton!
     @IBOutlet weak var ingredientsListLabel: UILabel!
@@ -22,6 +24,11 @@ class SearchRecipeViewController: UIViewController {
 
     
 
+    @IBAction func searchForRecipeButton(_ sender: Any) {
+        
+        print("clickOnButton")
+        shared.apiCall(ingredient: "potatoes")
+    }
     /*
     // MARK: - Navigation
 

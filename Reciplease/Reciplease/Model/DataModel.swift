@@ -8,6 +8,12 @@
 import Foundation
 
 // MARK: - RecipeFound
+// To parse the JSON, add this file to your project and do:
+//
+//   let RecipeFound = try? JSONDecoder().decode(RecipeFound.self, from: jsonData)
+
+
+// MARK: - RecipeFound
 struct RecipeFound: Codable {
     let q: String
     let from, to: Int
@@ -32,36 +38,18 @@ struct Recipe: Codable {
     let yield: Int
     let dietLabels, healthLabels, cautions, ingredientLines: [String]
     let ingredients: [Ingredient]
-    let calories, totalWeight: Double
-    let totalTime: Double
+    let calories, totalWeight, totalTime: Double
+    let cuisineType: [CuisineType]
+    let mealType, dishType: [String]
     let totalNutrients, totalDaily: [String: Total]
     let digest: [Digest]
-    let cuisineType, mealType, dishType: [String]?
-    
-    init(name: String, url: String) {
-        self.label = name
-        self.url = url
-        image = ""
-        uri = ""
-        source = ""
-        shareAs = ""
-        yield = 0
-        dietLabels = []
-        healthLabels = []
-        cautions = []
-        ingredientLines = []
-        ingredients = []
-        calories = 0.0
-        totalWeight = 0.0
-        totalTime = 0.0
-        totalNutrients = [:]
-        totalDaily = [:]
-        digest = []
-        cuisineType = nil
-        mealType = nil
-        dishType = nil
-        
-    }
+    let tags: [String]?
+}
+
+enum CuisineType: String, Codable {
+    case american = "american"
+    case italian = "italian"
+    case southAmerican = "south american"
 }
 
 // MARK: - Digest
@@ -98,13 +86,15 @@ enum Unit: String, Codable {
 // MARK: - Ingredient
 struct Ingredient: Codable {
     let text: String
+    let quantity: Double
+    let measure: String?
+    let food: String
     let weight: Double
-    let foodCategory: String?
-    let foodID: String
+    let foodCategory, foodID: String
     let image: String?
 
     enum CodingKeys: String, CodingKey {
-        case text, weight, foodCategory
+        case text, quantity, measure, food, weight, foodCategory
         case foodID = "foodId"
         case image
     }
