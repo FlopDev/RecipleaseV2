@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchTableViewViewController: UIViewController {
+    
+    static var recipeCell = "recipeCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,4 +28,19 @@ class SearchTableViewViewController: UIViewController {
     }
     */
 
+}
+
+extension SearchTableViewViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let recipeCell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewViewController.recipeCell, for: indexPath)
+        return recipeCell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
 }
