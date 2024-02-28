@@ -9,6 +9,8 @@ import UIKit
 
 class FavoriteTableViewRecipeSavedViewController: UIViewController {
 
+    static var recipeCell = "favoriteRecipeCell"
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,4 +28,19 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
     }
     */
 
+}
+
+extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let favoriteRecipeCell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewViewController.recipeCell, for: indexPath)
+        return favoriteRecipeCell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
 }

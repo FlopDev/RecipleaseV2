@@ -9,6 +9,7 @@ import UIKit
 
 class SearchTableViewViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     static var recipeCell = "recipeCell"
 
     override func viewDidLoad() {
