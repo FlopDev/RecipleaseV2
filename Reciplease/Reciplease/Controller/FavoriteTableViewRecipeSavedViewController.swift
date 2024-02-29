@@ -9,7 +9,9 @@ import UIKit
 
 class FavoriteTableViewRecipeSavedViewController: UIViewController {
 
-    static var recipeCell = "favoriteRecipeCell"
+    
+    @IBOutlet weak var favoriteTableView: UITableView!
+    static var favoriteRecipeCell = "favoriteRecipeCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +33,17 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
 }
 
 extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let favoriteRecipeCell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewViewController.recipeCell, for: indexPath)
-        return favoriteRecipeCell
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let favoriteRecipeCell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewRecipeSavedViewController.favoriteRecipeCell, for: indexPath)
+        return favoriteRecipeCell
     }
+    
 }

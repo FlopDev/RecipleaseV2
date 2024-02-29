@@ -27,7 +27,7 @@ class SearchRecipeViewController: UIViewController {
     @IBAction func searchForRecipeButton(_ sender: Any) {
         
         print("clickOnButton")
-        shared.apiCall(ingredient: "potatoes")
+        //shared.apiCall(ingredient: "potatoes")
     }
     /*
     // MARK: - Navigation
