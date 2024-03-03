@@ -23,7 +23,7 @@ class SearchRecipeViewController: UIViewController {
     }
 
     
-
+    // this button is pressed when the user have write all his ingredients and he wants the recipe
     @IBAction func searchForRecipeButton(_ sender: Any) {
         
         print("clickOnButton")
