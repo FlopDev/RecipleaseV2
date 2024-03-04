@@ -283,6 +283,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="wP3-tg-SJO">
+                                <rect key="frame" x="186.66666666666666" y="674" width="19.666666666666657" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="19.670000000000002" id="htT-dH-48C"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RpC-fj-UBw"/>
                         <color key="backgroundColor" red="0.21558922529999999" green="0.2000457048" blue="0.19608536360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -294,6 +300,7 @@
                             <constraint firstItem="D0P-dk-Fwu" firstAttribute="top" secondItem="RG5-Gz-9p4" secondAttribute="bottom" constant="43.666666666666686" id="OvZ-yq-qRF"/>
                             <constraint firstItem="C0i-Yw-Jvb" firstAttribute="width" secondItem="NoU-Ka-ivY" secondAttribute="width" multiplier="0.75" id="Rsu-3Z-gsu"/>
                             <constraint firstAttribute="trailing" secondItem="RG5-Gz-9p4" secondAttribute="trailing" id="a3z-X5-Zxq"/>
+                            <constraint firstItem="wP3-tg-SJO" firstAttribute="centerX" secondItem="NoU-Ka-ivY" secondAttribute="centerX" id="eFh-PQ-zIX"/>
                             <constraint firstItem="RG5-Gz-9p4" firstAttribute="trailing" secondItem="RpC-fj-UBw" secondAttribute="trailing" id="jTX-Gs-2kr"/>
                             <constraint firstItem="D0P-dk-Fwu" firstAttribute="centerX" secondItem="NoU-Ka-ivY" secondAttribute="centerX" id="kiF-du-HUU"/>
                             <constraint firstItem="RG5-Gz-9p4" firstAttribute="top" secondItem="RpC-fj-UBw" secondAttribute="top" constant="50" id="l9f-s8-ref"/>
@@ -302,6 +309,7 @@
                             <constraint firstItem="D0P-dk-Fwu" firstAttribute="height" secondItem="NoU-Ka-ivY" secondAttribute="height" multiplier="0.0422535" id="rt7-lZ-6Ph"/>
                             <constraint firstItem="RG5-Gz-9p4" firstAttribute="height" secondItem="NoU-Ka-ivY" secondAttribute="height" multiplier="0.14" id="s4v-ON-zYQ"/>
                             <constraint firstItem="C0i-Yw-Jvb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4ef-cT-kLb" secondAttribute="bottom" constant="259" id="vNN-Hu-XYe"/>
+                            <constraint firstItem="wP3-tg-SJO" firstAttribute="leading" secondItem="RpC-fj-UBw" secondAttribute="leading" constant="186.66999999999999" id="vk7-nT-sfl"/>
                             <constraint firstItem="4ef-cT-kLb" firstAttribute="leading" secondItem="RpC-fj-UBw" secondAttribute="leading" constant="20" id="xEG-22-NdN"/>
                             <constraint firstItem="RpC-fj-UBw" firstAttribute="bottom" secondItem="C0i-Yw-Jvb" secondAttribute="bottom" constant="35" id="y8D-v2-AeV"/>
                             <constraint firstItem="RG5-Gz-9p4" firstAttribute="centerX" secondItem="C0i-Yw-Jvb" secondAttribute="centerX" id="zrT-Rr-qKg"/>
@@ -312,6 +320,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="llZ-xE-PLa"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="wP3-tg-SJO" id="kT7-kd-ruL"/>
                         <outlet property="addButton" destination="5l3-P9-Y77" id="zYS-mX-Jii"/>
                         <outlet property="clearButton" destination="one-Vp-nWp" id="YUw-QR-TMC"/>
                         <outlet property="ingredientsListLabel" destination="4ef-cT-kLb" id="NBR-Yu-rWM"/>
@@ -321,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUU-r5-hv6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="-432"/>
+            <point key="canvasLocation" x="997.70992366412213" y="-432.3943661971831"/>
         </scene>
         <!--Reciplease-->
         <scene sceneID="2mO-H0-PpS">

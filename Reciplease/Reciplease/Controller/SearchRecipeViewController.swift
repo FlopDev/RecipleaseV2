@@ -9,8 +9,13 @@ import UIKit
 
 class SearchRecipeViewController: UIViewController {
     
+    // MARK: - Properties
     let shared = API()
-
+    var ingredients = ""
+    var recipes: [Hit] = []
+    
+    // MARK: - Outlets
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchRecipeButton: UIButton!
     @IBOutlet weak var ingredientsListLabel: UILabel!
     @IBOutlet weak var clearButton: UIButton!
@@ -18,25 +23,56 @@ class SearchRecipeViewController: UIViewController {
     @IBOutlet weak var searchIngredientTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.activityIndicator.isHidden = true
+        
         // Do any additional setup after loading the view.
     }
-
     
+    // MARK: - Functions
     // this button is pressed when the user have write all his ingredients and he wants the recipe
     @IBAction func searchForRecipeButton(_ sender: Any) {
         
-        print("clickOnButton")
-        //shared.apiCall(ingredient: "potatoes")
+        guard ingredientsListLabel.text != "" else {
+            self.presentAlert(title: "OK", message: "Vous n'avez rien dans votre frigot ? Veuillez rentrer un ingredient")
+            return
+        }
+        shared.fetchAPIData(ingredient: ingredientsListLabel.text!) { success, data in
+            guard success == true else {
+                print("Oups ! Il y a une erreur.")
+                return
+            }
+            self.recipes = data!.hits
+            self.ingredients = ""
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = false
+                self.ingredientsListLabel.text = ""
+                self.performSegue(withIdentifier: "segueToList", sender: self)
+            }
+        }
     }
+    
+    // MARK: - Alert
+    func presentAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
+     DECLARATION :
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+             if segue.identifier == "nomDuSegue" {
+                 let VC = segue.destination as! nomDuVC
+                // action like pushing data to the VC
+             }
+         }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     APPEL :
+     self.performSegue(withIdentifier: "nomDuSegue", sender: self)
+     */
+    
 }
