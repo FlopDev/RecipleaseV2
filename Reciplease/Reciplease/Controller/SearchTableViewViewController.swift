@@ -11,9 +11,11 @@ class SearchTableViewViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     static var recipeCell = "recipeCell"
+    var recipes: [Hit]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(" Les recettes sont : \(String(describing: recipes))")
 
         // Do any additional setup after loading the view.
     }

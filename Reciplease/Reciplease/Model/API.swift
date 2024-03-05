@@ -36,16 +36,14 @@ class API {
             switch data.result {
             case .success(let data):
                 do {
-                    // Décodage des données JSON reçues en un objet RecipeFound
                     let responseJSON = try JSONDecoder().decode(RecipeFound.self, from: data)
-                    // Création de l'objet RecipeFound à partir des données décodées
                     let objectRecipe = RecipeFound(q: responseJSON.q, from: responseJSON.from, to: responseJSON.to, more: responseJSON.more, count: responseJSON.count, hits: responseJSON.hits)
-                    // Appel du callback avec les données récupérées
                     callback(true, objectRecipe)
-                } catch {
-                    // Gestion des erreurs de décodage
-                    print("error")
+                } catch let error {
+                    print("Error decoding JSON: \(error)")
+                    callback(false, nil)
                 }
+
                 
             case .failure(let error):
                 // Gestion des erreurs de requête

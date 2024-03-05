@@ -12,7 +12,7 @@ class SearchRecipeViewController: UIViewController {
     // MARK: - Properties
     let shared = API()
     var ingredients = ""
-    var recipes: [Hit] = []
+    var recipes: [Hit]!
     
     // MARK: - Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -30,25 +30,42 @@ class SearchRecipeViewController: UIViewController {
     
     // MARK: - Functions
     // this button is pressed when the user have write all his ingredients and he wants the recipe
+    
+    @IBAction func addIngredient(_ sender: Any) {
+        
+        if searchIngredientTextField.text!.isEmpty == true {
+            self.presentAlert(title: "Erreur", message: "Veuillez rentrer un ingredient à rechercher")
+        } else {
+            ingredientsListLabel.text! += "- \(searchIngredientTextField.text!)\n"
+            ingredients += " \(searchIngredientTextField.text!)"
+            print("Les ingrédients sont : \(ingredients) ")
+        }
+        searchIngredientTextField.text = ""
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        searchIngredientTextField.resignFirstResponder()
+    }
+    
     @IBAction func searchForRecipeButton(_ sender: Any) {
         
-        guard ingredientsListLabel.text != "" else {
+        guard ingredients != "" else {
             self.presentAlert(title: "OK", message: "Vous n'avez rien dans votre frigot ? Veuillez rentrer un ingredient")
             return
         }
-        shared.fetchAPIData(ingredient: ingredientsListLabel.text!) { success, data in
-            guard success == true else {
-                print("Oups ! Il y a une erreur.")
-                return
-            }
-            self.recipes = data!.hits
-            self.ingredients = ""
-            DispatchQueue.main.async {
-                self.activityIndicator.isHidden = false
-                self.ingredientsListLabel.text = ""
-                self.performSegue(withIdentifier: "segueToList", sender: self)
-            }
-        }
+       shared.fetchAPIData(ingredient: "potatoe") { success, data in
+           guard success == true else {
+               print("Oups ! Il y a une erreur.")
+               return
+           }
+           self.recipes = data!.hits
+           self.ingredients = ""
+           DispatchQueue.main.async {
+               self.activityIndicator.isHidden = false
+               self.ingredientsListLabel.text = ""
+               self.performSegue(withIdentifier: "segueToTableViewVC", sender: self)
+           }
+       }
     }
     
     // MARK: - Alert
@@ -61,18 +78,18 @@ class SearchRecipeViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    /*
      // MARK: - Navigation
-     DECLARATION :
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-             if segue.identifier == "nomDuSegue" {
-                 let VC = segue.destination as! nomDuVC
-                // action like pushing data to the VC
+             if segue.identifier == "segueToTableViewVC" {
+                 let VC = segue.destination as! SearchTableViewViewController
+                 VC.recipes = recipes
              }
          }
+}
 
-     APPEL :
-     self.performSegue(withIdentifier: "nomDuSegue", sender: self)
-     */
-    
+extension SearchRecipeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

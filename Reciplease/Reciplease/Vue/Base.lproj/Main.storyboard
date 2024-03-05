@@ -215,6 +215,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="34.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="ZZZ-nV-n4p" id="P6y-3N-do4"/>
+                                                        </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5l3-P9-Y77">
                                                         <rect key="frame" x="300" y="0.0" width="59.666666666666686" height="34.333333333333336"/>
@@ -227,6 +230,9 @@
                                                         <buttonConfiguration key="configuration" style="plain" title="Add">
                                                             <fontDescription key="titleFontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="addIngredient:" destination="ZZZ-nV-n4p" eventType="touchUpInside" id="CJJ-PW-fmt"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -254,11 +260,11 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="searchForRecipeButton:" destination="ZZZ-nV-n4p" eventType="touchUpInside" id="aN6-LH-34h"/>
-                                    <segue destination="1vI-8C-MWq" kind="show" id="yal-xN-ipm"/>
+                                    <segue destination="1vI-8C-MWq" kind="show" identifier="segueToTableViewVC" id="yal-xN-ipm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ef-cT-kLb">
-                                <rect key="frame" x="20" y="367" width="353" height="22.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ef-cT-kLb">
+                                <rect key="frame" x="20" y="367" width="353" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -284,14 +290,12 @@
                                 </subviews>
                             </stackView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="wP3-tg-SJO">
-                                <rect key="frame" x="186.66666666666666" y="674" width="19.666666666666657" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="19.670000000000002" id="htT-dH-48C"/>
-                                </constraints>
+                                <rect key="frame" x="186.66666666666666" y="674.66666666666663" width="19.666666666666657" height="33.333333333333371"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RpC-fj-UBw"/>
                         <color key="backgroundColor" red="0.21558922529999999" green="0.2000457048" blue="0.19608536360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4ef-cT-kLb" firstAttribute="top" secondItem="D0P-dk-Fwu" secondAttribute="bottom" constant="15" id="DeJ-id-Bak"/>
                             <constraint firstItem="WRA-MH-fuj" firstAttribute="width" secondItem="NoU-Ka-ivY" secondAttribute="width" multiplier="0.763" id="J0z-YO-adm"/>
@@ -299,8 +303,10 @@
                             <constraint firstItem="C0i-Yw-Jvb" firstAttribute="height" secondItem="NoU-Ka-ivY" secondAttribute="height" multiplier="0.1" id="Mhp-jI-EN7"/>
                             <constraint firstItem="D0P-dk-Fwu" firstAttribute="top" secondItem="RG5-Gz-9p4" secondAttribute="bottom" constant="43.666666666666686" id="OvZ-yq-qRF"/>
                             <constraint firstItem="C0i-Yw-Jvb" firstAttribute="width" secondItem="NoU-Ka-ivY" secondAttribute="width" multiplier="0.75" id="Rsu-3Z-gsu"/>
+                            <constraint firstItem="wP3-tg-SJO" firstAttribute="centerY" secondItem="C0i-Yw-Jvb" secondAttribute="centerY" id="YL2-yP-3aZ"/>
                             <constraint firstAttribute="trailing" secondItem="RG5-Gz-9p4" secondAttribute="trailing" id="a3z-X5-Zxq"/>
                             <constraint firstItem="wP3-tg-SJO" firstAttribute="centerX" secondItem="NoU-Ka-ivY" secondAttribute="centerX" id="eFh-PQ-zIX"/>
+                            <constraint firstItem="RpC-fj-UBw" firstAttribute="bottom" secondItem="wP3-tg-SJO" secondAttribute="bottom" constant="61" id="ip1-m1-Fns"/>
                             <constraint firstItem="RG5-Gz-9p4" firstAttribute="trailing" secondItem="RpC-fj-UBw" secondAttribute="trailing" id="jTX-Gs-2kr"/>
                             <constraint firstItem="D0P-dk-Fwu" firstAttribute="centerX" secondItem="NoU-Ka-ivY" secondAttribute="centerX" id="kiF-du-HUU"/>
                             <constraint firstItem="RG5-Gz-9p4" firstAttribute="top" secondItem="RpC-fj-UBw" secondAttribute="top" constant="50" id="l9f-s8-ref"/>
@@ -314,6 +320,9 @@
                             <constraint firstItem="RpC-fj-UBw" firstAttribute="bottom" secondItem="C0i-Yw-Jvb" secondAttribute="bottom" constant="35" id="y8D-v2-AeV"/>
                             <constraint firstItem="RG5-Gz-9p4" firstAttribute="centerX" secondItem="C0i-Yw-Jvb" secondAttribute="centerX" id="zrT-Rr-qKg"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="rvU-96-Wtz" appends="YES" id="QUW-ew-sd0"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="h2I-rY-G6Y"/>
                     <navigationItem key="navigationItem" title="Reciplease" id="wEe-YS-ULM">
@@ -329,6 +338,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUU-r5-hv6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="rvU-96-Wtz">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="ZZZ-nV-n4p" id="8Q4-XK-dHT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="997.70992366412213" y="-432.3943661971831"/>
         </scene>

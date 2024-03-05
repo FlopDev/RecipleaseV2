@@ -39,7 +39,7 @@ struct Recipe: Codable {
     let dietLabels, healthLabels, cautions, ingredientLines: [String]
     let ingredients: [Ingredient]
     let calories, totalWeight, totalTime: Double
-    let cuisineType: [CuisineType]
+    //let cuisineType: [CuisineType] make crash
     let mealType, dishType: [String]
     let totalNutrients, totalDaily: [String: Total]
     let digest: [Digest]
@@ -49,6 +49,7 @@ struct Recipe: Codable {
 enum CuisineType: String, Codable {
     case american = "american"
     case italian = "italian"
+    case mexican = "mexican"
     case southAmerican = "south american"
 }
 
