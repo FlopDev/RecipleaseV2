@@ -22,6 +22,17 @@ final class CoreDataStack {
         return CoreDataStack.sharedInstance.persistentContainer.viewContext
     }
     
+    func saveFavoriteRecipe(forXpeople: Int, image: String, ingredients: String, recipeName: String, timeToPrepare: Int, url: String) {
+        // je peu utiliser viewContext directe au lieu du singleton ?
+        let favoriteRecipe = FavoriteRecipe(context: CoreDataStack.sharedInstance.viewContext)
+        favoriteRecipe.forXpeople = Int16(forXpeople)
+        favoriteRecipe.image = image
+        favoriteRecipe.ingredients = ingredients
+        favoriteRecipe.recipeName = recipeName
+        favoriteRecipe.timeToPrepare = Int16(timeToPrepare)
+        favoriteRecipe.url = url
+    }
+    
     // MARK: - Private
     
     private lazy var persistentContainer: NSPersistentContainer = {
