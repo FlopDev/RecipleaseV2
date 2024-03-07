@@ -8,7 +8,9 @@
 import UIKit
 
 class SoughtRecipeViewController: UIViewController {
-
+    
+    var recipe: Hit!
+    
     @IBOutlet weak var timeToPrepareLabel: UILabel!
     @IBOutlet weak var numberOfLikesLabel: UILabel!
     @IBOutlet weak var getDirectionButton: UIButton!
@@ -19,17 +21,45 @@ class SoughtRecipeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let ingredients = "\(recipe.recipe.ingredientLines)"
+        let ingredientsList = ingredients
+            .replacingOccurrences(of: "[", with: "-")
+            .replacingOccurrences(of: ",", with: "\n-")
+        
+        ingredientsListLabel.text = ingredientsList
+        
+        recipeNameLabel.text = "\(recipe.recipe.label)"
+        timeToPrepareLabel.text = "\(recipe.recipe.totalTime) min"
+        numberOfLikesLabel.text = "for \(recipe.recipe.yield)p"
+        getImage()
+    }
+    // MARK: - Function
+    @IBAction func getDirection(_ sender: Any) {
+        if let urlToOpen = URL(string: "\(recipe.recipe.url)") {
+            UIApplication.shared.open(urlToOpen)
+        } else {
+            presentAlert(title: "Error", message: "Sorry, we can't open this URL")
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getImage() {
+        let url = URL(string: recipe.recipe.image)!
+        if let data = try? Data(contentsOf: url) {
+               // Create Image and Update Image View
+            recipeImageView.image = UIImage(data: data)
+           }
     }
-    */
 
+    @IBAction func makeFavorite(_ sender: Any) {
+    }
+    
+    func presentAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    // MARK: - Navigation
 }

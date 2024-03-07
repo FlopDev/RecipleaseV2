@@ -2,7 +2,7 @@
 //  PresentTableViewCell.swift
 //  Reciplease
 //
-//  Created by Florian Peyrony on 26/05/2021.
+//  Created by Florian Peyrony on 5/03/2024.
 //
 
 import UIKit
@@ -38,10 +38,12 @@ class PresentTableViewCell: UITableViewCell {
     
     func getImage(image: String) {
        let url = URL(string: image)!
-    if let data = try? Data(contentsOf: url) {
-               // Create Image and Update Image View
-        recipeImage.image = UIImage(data: data)
-      }
+        DispatchQueue.main.async {
+            if let data = try? Data(contentsOf: url) {
+                // Create Image and Update Image View
+                self.recipeImage.image = UIImage(data: data)
+            }
+        }
     }
     
     private func addShadow() {

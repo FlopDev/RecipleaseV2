@@ -12,7 +12,7 @@ class SearchRecipeViewController: UIViewController {
     // MARK: - Properties
     let shared = API()
     var ingredients = ""
-    var recipes: [Hit]!
+    var recipes: [Hit] = []
     
     // MARK: - Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -53,17 +53,18 @@ class SearchRecipeViewController: UIViewController {
             self.presentAlert(title: "OK", message: "Vous n'avez rien dans votre frigot ? Veuillez rentrer un ingredient")
             return
         }
-       shared.fetchAPIData(ingredient: "potatoe") { success, data in
+       shared.fetchAPIData(ingredient: ingredients) {  success, data in
            guard success == true else {
                print("Oups ! Il y a une erreur.")
                return
            }
-           self.recipes = data!.hits
-           self.ingredients = ""
+
            DispatchQueue.main.async {
+               self.recipes = data!.hits
+               self.ingredients = ""
                self.activityIndicator.isHidden = false
                self.ingredientsListLabel.text = ""
-               self.performSegue(withIdentifier: "segueToTableViewVC", sender: self)
+               self.performSegue(withIdentifier: "segueToTableViewVC", sender: self.recipes)
            }
        }
     }
