@@ -31,6 +31,11 @@ final class CoreDataStack {
         favoriteRecipe.recipeName = recipeName
         favoriteRecipe.timeToPrepare = Int16(timeToPrepare)
         favoriteRecipe.url = url
+        do {
+            try CoreDataStack.sharedInstance.viewContext.save()
+        } catch {
+            print("error saving \(favoriteRecipe.recipeName)")
+        }
     }
     
     // MARK: - Private
