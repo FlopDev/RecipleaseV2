@@ -15,8 +15,6 @@ final class CoreDataStack {
     
     // MARK: - Public
     
-    var myProperty: AnyObject? // <--- Propriété exemple  CoreDataStack.sharedInstance.myProperty
-    
     var viewContext: NSManagedObjectContext {
         //On pourra utiliser notre contexte partout dans notre code en écrivant simplement  CoreDataStack.sharedInstance.viewContext
         return CoreDataStack.sharedInstance.persistentContainer.viewContext
@@ -34,7 +32,7 @@ final class CoreDataStack {
         do {
             try CoreDataStack.sharedInstance.viewContext.save()
         } catch {
-            print("error saving \(favoriteRecipe.recipeName)")
+            print("error saving \(String(describing: favoriteRecipe.recipeName))")
         }
     }
     
