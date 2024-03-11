@@ -36,6 +36,10 @@ final class CoreDataStack {
         }
     }
     
+    func fetchData() {
+        let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
+    }
+    
     // MARK: - Private
     
     private lazy var persistentContainer: NSPersistentContainer = {

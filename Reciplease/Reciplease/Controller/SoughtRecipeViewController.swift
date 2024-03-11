@@ -51,6 +51,7 @@ class SoughtRecipeViewController: UIViewController {
     }
 
     @IBAction func makeFavorite(_ sender: Any) {
+        // CoreDataStack.fetchdata
     }
     
     func presentAlert(title: String, message: String) {
