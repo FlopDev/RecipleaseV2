@@ -577,6 +577,7 @@
                     <connections>
                         <outlet property="getDirectionButton" destination="JNC-nT-GcM" id="lGA-SZ-6ZT"/>
                         <outlet property="ingredientsListLabel" destination="YIu-Dj-ijb" id="E1x-HJ-SXX"/>
+                        <outlet property="makeFavoriteButton" destination="e8k-iR-la7" id="3gy-9M-Avn"/>
                         <outlet property="numberOfLikesLabel" destination="1Jd-Pb-P0h" id="8AT-0T-yQf"/>
                         <outlet property="recipeImageView" destination="Vyj-Kd-HAG" id="OnQ-W6-w77"/>
                         <outlet property="recipeNameLabel" destination="ccy-dA-pKP" id="A2S-YU-1zl"/>

@@ -11,6 +11,7 @@ class SoughtRecipeViewController: UIViewController {
     
     var recipe: Hit!
     
+    @IBOutlet weak var makeFavoriteButton: UIBarButtonItem!
     @IBOutlet weak var timeToPrepareLabel: UILabel!
     @IBOutlet weak var numberOfLikesLabel: UILabel!
     @IBOutlet weak var getDirectionButton: UIButton!
@@ -51,7 +52,8 @@ class SoughtRecipeViewController: UIViewController {
     }
 
     @IBAction func makeFavorite(_ sender: Any) {
-        // CoreDataStack.fetchdata
+        CoreDataStack.sharedInstance.saveFavoriteRecipe(recipe: recipe)
+        // makeFavoriteButton.image = UIImage(named: "star.fill")
     }
     
     func presentAlert(title: String, message: String) {

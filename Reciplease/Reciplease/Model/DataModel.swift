@@ -28,7 +28,7 @@ struct Hit: Codable {
 }
 
 // MARK: - Recipe
-class Recipe: Codable {
+struct Recipe: Codable {
     let uri: String
     let label: String
     let image: String
