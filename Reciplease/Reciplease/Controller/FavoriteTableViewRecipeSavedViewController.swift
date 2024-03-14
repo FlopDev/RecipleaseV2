@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoriteTableViewRecipeSavedViewController: UIViewController {
+    
+    
 
     
     @IBOutlet weak var favoriteTableView: UITableView!
@@ -15,7 +18,11 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
+        guard let favoritesRecipes = try? CoreDataStack.sharedInstance.viewContext.fetch(request) else {
+            return
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -29,6 +36,15 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let recipe = sender as? Hit,
+           let destination = segue.destination as? FavoriteRecipeViewController,
+           segue.identifier == "nameOfTheSegue" {
+            destination.recipe = recipe
+            print("\(destination.recipe)")
+            // appel : self.performSegue(withIdentifier: "nameOfTheSegue", sender: recipe)
+        }
+    }
 
 }
 

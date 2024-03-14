@@ -8,6 +8,8 @@
 import UIKit
 
 class FavoriteRecipeViewController: UIViewController {
+    
+    var recipe: Hit!
 
     // MARK: - Outlets
     @IBOutlet weak var returnButton: UINavigationItem!

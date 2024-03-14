@@ -44,7 +44,6 @@ final class CoreDataStack {
     }
     
     
-    
     func deleteRecipe(recipe: FavoriteRecipe) {
         viewContext.delete(recipe)
     }
