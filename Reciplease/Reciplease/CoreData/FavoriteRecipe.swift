@@ -10,6 +10,4 @@ import CoreData
 
 class FavoriteRecipe: NSManagedObject {
     
-    
-    
 }
