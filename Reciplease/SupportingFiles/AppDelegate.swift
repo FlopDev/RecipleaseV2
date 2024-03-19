@@ -15,12 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.2486171424, green: 0.5900595188, blue: 0.3649633527, alpha: 1)
         if let font = UIFont(name: "Noteworthy Light", size: 20) {
             UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         }
-        
-        
         return true
     }
 

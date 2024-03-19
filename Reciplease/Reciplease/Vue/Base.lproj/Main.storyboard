@@ -260,10 +260,9 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="searchForRecipeButton:" destination="ZZZ-nV-n4p" eventType="touchUpInside" id="aN6-LH-34h"/>
-                                    <segue destination="1vI-8C-MWq" kind="show" identifier="segueToTableViewVC" id="irc-Jn-NBJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ef-cT-kLb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ef-cT-kLb">
                                 <rect key="frame" x="20" y="367" width="353" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -314,7 +313,7 @@
                             <constraint firstItem="D0P-dk-Fwu" firstAttribute="width" secondItem="NoU-Ka-ivY" secondAttribute="width" multiplier="0.83028" id="pcU-eq-ZaZ"/>
                             <constraint firstItem="D0P-dk-Fwu" firstAttribute="height" secondItem="NoU-Ka-ivY" secondAttribute="height" multiplier="0.0422535" id="rt7-lZ-6Ph"/>
                             <constraint firstItem="RG5-Gz-9p4" firstAttribute="height" secondItem="NoU-Ka-ivY" secondAttribute="height" multiplier="0.14" id="s4v-ON-zYQ"/>
-                            <constraint firstItem="C0i-Yw-Jvb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4ef-cT-kLb" secondAttribute="bottom" constant="259" id="vNN-Hu-XYe"/>
+                            <constraint firstItem="C0i-Yw-Jvb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4ef-cT-kLb" secondAttribute="bottom" constant="20" id="vNN-Hu-XYe"/>
                             <constraint firstItem="wP3-tg-SJO" firstAttribute="leading" secondItem="RpC-fj-UBw" secondAttribute="leading" constant="186.66999999999999" id="vk7-nT-sfl"/>
                             <constraint firstItem="4ef-cT-kLb" firstAttribute="leading" secondItem="RpC-fj-UBw" secondAttribute="leading" constant="20" id="xEG-22-NdN"/>
                             <constraint firstItem="RpC-fj-UBw" firstAttribute="bottom" secondItem="C0i-Yw-Jvb" secondAttribute="bottom" constant="35" id="y8D-v2-AeV"/>
@@ -335,6 +334,7 @@
                         <outlet property="ingredientsListLabel" destination="4ef-cT-kLb" id="NBR-Yu-rWM"/>
                         <outlet property="searchIngredientTextField" destination="WRA-MH-fuj" id="pGb-xQ-M3K"/>
                         <outlet property="searchRecipeButton" destination="C0i-Yw-Jvb" id="i1W-hW-pEF"/>
+                        <segue destination="1vI-8C-MWq" kind="show" identifier="segueToTableViewVC" id="bbW-dT-gwF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUU-r5-hv6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -437,7 +437,6 @@
                                             <outlet property="recipeIngredients" destination="yIu-yo-Z39" id="DUk-c0-L4k"/>
                                             <outlet property="recipeName" destination="0gP-st-B6f" id="ZGk-SK-5LY"/>
                                             <outlet property="recipeTime" destination="egP-c0-9Kd" id="9XG-wn-3mH"/>
-                                            <segue destination="Gpe-SR-6GY" kind="show" identifier="segueToRecipeClicked" id="s7X-Nw-dQX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -461,6 +460,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="4OP-Kl-ILP" id="ujg-8c-wC0"/>
+                        <segue destination="Gpe-SR-6GY" kind="show" identifier="segueToRecipeClicked" id="qvj-if-w8Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHZ-9f-9Yj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
