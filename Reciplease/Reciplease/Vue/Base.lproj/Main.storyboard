@@ -541,16 +541,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WPY-0C-4I9">
-                                <rect key="frame" x="300.33333333333331" y="147" width="78.666666666666686" height="40.666666666666657"/>
+                                <rect key="frame" x="261" y="147" width="118" height="40.666666666666657"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="245 👍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jd-Pb-P0h">
-                                        <rect key="frame" x="0.0" y="0.0" width="78.666666666666671" height="20.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for 8 ppl" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jd-Pb-P0h">
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h45 🕐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwD-re-yrt">
-                                        <rect key="frame" x="0.0" y="20.333333333333343" width="78.666666666666671" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h45 🕐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwD-re-yrt">
+                                        <rect key="frame" x="0.0" y="20.333333333333343" width="118" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -579,7 +579,7 @@
                             <constraint firstItem="YIu-Dj-ijb" firstAttribute="top" secondItem="538-Y5-Jd2" secondAttribute="bottom" constant="16" id="uWH-uH-G8D"/>
                             <constraint firstItem="TDy-fa-owr" firstAttribute="trailing" secondItem="WPY-0C-4I9" secondAttribute="trailing" constant="14" id="wjq-qW-LpI"/>
                             <constraint firstItem="ccy-dA-pKP" firstAttribute="centerX" secondItem="8aU-W2-M4X" secondAttribute="centerX" id="xsL-b8-JhO"/>
-                            <constraint firstItem="WPY-0C-4I9" firstAttribute="width" secondItem="Vyj-Kd-HAG" secondAttribute="width" multiplier="0.2" id="y5c-O5-dCx"/>
+                            <constraint firstItem="WPY-0C-4I9" firstAttribute="width" secondItem="Vyj-Kd-HAG" secondAttribute="width" multiplier="0.3" id="y5c-O5-dCx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Reciplease" id="A6F-2H-1uk">
@@ -591,10 +591,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="forXPeople" destination="1Jd-Pb-P0h" id="mGW-Dz-hbd"/>
                         <outlet property="getDirectionButton" destination="JNC-nT-GcM" id="lGA-SZ-6ZT"/>
                         <outlet property="ingredientsListLabel" destination="YIu-Dj-ijb" id="E1x-HJ-SXX"/>
                         <outlet property="makeFavoriteButton" destination="e8k-iR-la7" id="3gy-9M-Avn"/>
-                        <outlet property="numberOfLikesLabel" destination="1Jd-Pb-P0h" id="8AT-0T-yQf"/>
                         <outlet property="recipeImageView" destination="Vyj-Kd-HAG" id="OnQ-W6-w77"/>
                         <outlet property="recipeNameLabel" destination="ccy-dA-pKP" id="A2S-YU-1zl"/>
                         <outlet property="timeToPrepareLabel" destination="CwD-re-yrt" id="src-4q-Hxh"/>

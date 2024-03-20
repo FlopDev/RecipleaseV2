@@ -13,7 +13,8 @@ class SoughtRecipeViewController: UIViewController {
     
     @IBOutlet weak var makeFavoriteButton: UIBarButtonItem!
     @IBOutlet weak var timeToPrepareLabel: UILabel!
-    @IBOutlet weak var numberOfLikesLabel: UILabel!
+    
+    @IBOutlet weak var forXPeople: UILabel!
     @IBOutlet weak var getDirectionButton: UIButton!
     @IBOutlet weak var ingredientsListLabel: UILabel!
     @IBOutlet weak var recipeNameLabel: UILabel!
@@ -30,8 +31,8 @@ class SoughtRecipeViewController: UIViewController {
         ingredientsListLabel.text = ingredientsList
         
         recipeNameLabel.text = "\(recipe.recipe.label)"
-        timeToPrepareLabel.text = "\(recipe.recipe.totalTime) min"
-        numberOfLikesLabel.text = "for \(recipe.recipe.yield)p"
+        timeToPrepareLabel.text = "\(recipe.recipe.totalTime) min ⏲️"
+        forXPeople.text = "for \(recipe.recipe.yield) 👨"
         getImage()
     }
     // MARK: - Function
