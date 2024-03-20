@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+
 // Classe API responsable de la gestion des requêtes réseau et du stockage des recettes
 class API {
     // Instance partagée unique de la classe API
