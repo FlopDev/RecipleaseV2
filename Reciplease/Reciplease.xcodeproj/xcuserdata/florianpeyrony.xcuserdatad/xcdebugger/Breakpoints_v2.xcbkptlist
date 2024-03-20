@@ -71,54 +71,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B9213607-F2A4-46B2-BA37-3A1C8B6CA89C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Reciplease/Model/API.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "fetchAPIData(ingredient:callback:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B9213607-F2A4-46B2-BA37-3A1C8B6CA89C - 2de2ecd053ca8a75"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;) -&gt; () in Reciplease.API.fetchAPIData(ingredient: Swift.String, callback: (Swift.Bool, Swift.Optional&lt;Reciplease.RecipeFound&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Reciplease"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/florianpeyrony/Desktop/RecipleaseV2/RecipleaseV2/Reciplease/Reciplease/Model/API.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "1646">
-               </Location>
-               <Location
-                  uuid = "B9213607-F2A4-46B2-BA37-3A1C8B6CA89C - 2de2ecd053ca8b94"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;) -&gt; () in Reciplease.API.fetchAPIData(ingredient: Swift.String, callback: (Swift.Bool, Swift.Optional&lt;Reciplease.RecipeFound&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Reciplease"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/florianpeyrony/Desktop/RecipleaseV2/RecipleaseV2/Reciplease/Reciplease/Model/API.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "1574">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8C94A2A6-EA80-42EE-AE39-E4FEEEEAE73F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
