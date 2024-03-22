@@ -67,6 +67,45 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E8f-BK-Bjo" id="eGg-mw-IHb">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hqa-xL-FW3">
+                                                    <rect key="frame" x="263" y="-2" width="109.33333333333337" height="47"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h34-bg-Raq">
+                                                            <rect key="frame" x="8" y="0.0" width="34" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="35 people" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLu-4Z-qIB">
+                                                            <rect key="frame" x="8" y="26" width="77" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.26668250560000001" green="0.26662349699999999" blue="0.27058416600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="h34-bg-Raq" secondAttribute="trailing" constant="20" symbolic="YES" id="2gg-b7-NeR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="fLu-4Z-qIB" secondAttribute="bottom" id="8mX-Rb-gyW"/>
+                                                        <constraint firstItem="fLu-4Z-qIB" firstAttribute="top" secondItem="h34-bg-Raq" secondAttribute="bottom" constant="5" id="HRT-aF-5D2"/>
+                                                        <constraint firstItem="h34-bg-Raq" firstAttribute="leading" secondItem="hqa-xL-FW3" secondAttribute="leading" constant="8" id="HYm-rJ-3Gk"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fLu-4Z-qIB" secondAttribute="trailing" constant="20" symbolic="YES" id="Tow-lX-6g4"/>
+                                                        <constraint firstItem="fLu-4Z-qIB" firstAttribute="leading" secondItem="hqa-xL-FW3" secondAttribute="leading" constant="8" id="iO9-Fs-pUz"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uro-Rm-Snz">
+                                                    <rect key="frame" x="0.0" y="-29" width="393" height="101"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pizza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGG-IV-qWv">
+                                                    <rect key="frame" x="20" y="0.0" width="41" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
