@@ -56,13 +56,13 @@ extension SearchTableViewViewController: UITableViewDataSource {
     // Méthode appelée pour retourner le nombre de sections dans le tableau
     func numberOfSections(in tableView: UITableView) -> Int {
         // Dans ce cas, nous avons une seule section
-        return recipes.count
+        return 1
     }
     
     // Méthode appelée pour retourner le nombre de lignes dans la section spécifiée du tableau
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Dans ce cas, nous avons un seul élément dans la section
-        return 1
+        return recipes.count
     }
 }
 
