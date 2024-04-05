@@ -64,6 +64,9 @@ extension SearchTableViewViewController: UITableViewDataSource {
         // Dans ce cas, nous avons un seul élément dans la section
         return recipes.count
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120.0;//Choose your custom row height
+    }
 }
 
 extension SearchTableViewViewController: UITableViewDelegate {

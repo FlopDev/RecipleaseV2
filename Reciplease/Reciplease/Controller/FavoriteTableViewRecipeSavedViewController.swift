@@ -57,6 +57,10 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120.0;//Choose your custom row height
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let favoriteRecipeCell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewRecipeSavedViewController.favoriteRecipeCell, for: indexPath)
         return favoriteRecipeCell
