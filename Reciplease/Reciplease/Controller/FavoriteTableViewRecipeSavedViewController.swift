@@ -9,10 +9,7 @@ import UIKit
 import CoreData
 
 class FavoriteTableViewRecipeSavedViewController: UIViewController {
-    
-    
 
-    
     @IBOutlet weak var favoriteTableView: UITableView!
     static var favoriteRecipeCell = "favoriteRecipeCell"
 
@@ -22,9 +19,11 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         guard let favoritesRecipes = try? CoreDataStack.sharedInstance.viewContext.fetch(request) else {
             return
         }
+        print(favoritesRecipes.count)
         
         // Do any additional setup after loading the view.
     }
+    
     
 
     /*
