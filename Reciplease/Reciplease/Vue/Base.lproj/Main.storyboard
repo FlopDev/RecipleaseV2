@@ -132,6 +132,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="O7M-ow-ddJ" id="GIE-8m-H66"/>
+                                    <outlet property="delegate" destination="O7M-ow-ddJ" id="AwH-UN-ncC"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -149,7 +150,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteTableView" destination="uJz-ts-XnV" id="9ah-5n-AUe"/>
-                        <segue destination="PRf-lT-NVM" kind="show" id="yju-kX-KqU"/>
+                        <segue destination="PRf-lT-NVM" kind="show" identifier="segueToFavoriteRecipeClicked" id="yju-kX-KqU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAA-pm-IVs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -244,9 +245,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="forXPeopleLabel" destination="uLL-4w-5az" id="HQG-Rk-bp5"/>
                         <outlet property="getDirectionButton" destination="IB6-PO-VA3" id="8W2-37-EPe"/>
                         <outlet property="ingredientsListLabel" destination="YCp-EY-NOE" id="jUz-S8-5xU"/>
-                        <outlet property="numberOfLikesLabel" destination="uLL-4w-5az" id="kPx-t2-XIr"/>
                         <outlet property="recipeImageView" destination="7SL-bY-xhM" id="NUh-9F-6Fy"/>
                         <outlet property="recipeNameLabel" destination="dl3-3F-qnw" id="mlt-RM-YK8"/>
                         <outlet property="returnButton" destination="FI8-l1-8VB" id="0BV-tQ-gai"/>

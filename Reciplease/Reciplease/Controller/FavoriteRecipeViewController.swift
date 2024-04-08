@@ -9,7 +9,8 @@ import UIKit
 
 class FavoriteRecipeViewController: UIViewController {
     
-    var recipe: Hit!
+    var recipe: FavoriteRecipe!
+    
     
 
     // MARK: - Outlets
@@ -20,10 +21,15 @@ class FavoriteRecipeViewController: UIViewController {
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var timeToPrepareLabel: UILabel!
-    @IBOutlet weak var numberOfLikesLabel: UILabel!
+    
+    @IBOutlet weak var forXPeopleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         returnButton.titleView?.tintColor = #colorLiteral(red: 0.2, green: 0.8, blue: 0.5, alpha: 1.0)
+        ingredientsListLabel.text = recipe.ingredients
+        recipeNameLabel.text = recipe.recipeName
+        timeToPrepareLabel.text = "\(recipe.timeToPrepare) min"
+        forXPeopleLabel.text = "for \(recipe.forXpeople)p"
         // Do any additional setup after loading the view.
     }
     

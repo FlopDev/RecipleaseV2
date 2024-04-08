@@ -54,7 +54,7 @@ class SoughtRecipeViewController: UIViewController {
 
     @IBAction func makeFavorite(_ sender: Any) {
         CoreDataStack.sharedInstance.saveFavoriteRecipe(recipe: recipe)
-        // makeFavoriteButton.image = UIImage(named: "star.fill")
+        makeFavoriteButton.image = UIImage(named: "star.fill")
     }
     
     func presentAlert(title: String, message: String) {

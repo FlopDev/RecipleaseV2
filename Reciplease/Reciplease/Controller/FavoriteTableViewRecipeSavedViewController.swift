@@ -12,6 +12,8 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
 
     @IBOutlet weak var favoriteTableView: UITableView!
     static var favoriteRecipeCell = "favoriteRecipeCell"
+    var recipes: [FavoriteRecipe] = []
+    let manager = CoreDataStack()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,18 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         print(favoritesRecipes.count)
         
         // Do any additional setup after loading the view.
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
+        do {
+            recipes = try manager.viewContext.fetch(request)
+            favoriteTableView.reloadData()
+        } catch {
+            print("error => \(error)")
+        }
     }
     
     
@@ -36,12 +50,12 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
     }
     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let recipe = sender as? Hit,
+        if let recipe = sender as? FavoriteRecipe,
            let destination = segue.destination as? FavoriteRecipeViewController,
-           segue.identifier == "nameOfTheSegue" {
+           segue.identifier == "segueToFavoriteRecipeClicked" {
             destination.recipe = recipe
             print("\(destination.recipe)")
-            // appel : self.performSegue(withIdentifier: "nameOfTheSegue", sender: recipe)
+
         }
     }
 
@@ -65,4 +79,14 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
         return favoriteRecipeCell
     }
     
+}
+
+extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("u tape on this cell")
+        let selectRecipe = recipes[indexPath.row]
+        self.performSegue(withIdentifier: "segueToFavoriteRecipeClicked", sender: selectRecipe)
+        
+    }
 }
