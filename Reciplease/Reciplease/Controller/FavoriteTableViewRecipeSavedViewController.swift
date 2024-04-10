@@ -14,7 +14,6 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
     static var favoriteRecipeCell = "favoriteRecipeCell"
     var recipes: [FavoriteRecipe] = []
     let manager = CoreDataStack()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
@@ -38,6 +37,14 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         }
     }
     
+    
+   // func getImage(image: String) {
+   //    let url = URL(string: image)!
+   // if let data = try? Data(contentsOf: url) {
+   //            // Create Image and Update Image View
+   //     favoriteRecipeImage.image = UIImage(data: data)
+   //   }
+   // }
     
 
     /*
@@ -63,7 +70,7 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
 
 extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return recipes.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,10 +82,16 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let favoriteRecipeCell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewRecipeSavedViewController.favoriteRecipeCell, for: indexPath)
-        return favoriteRecipeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PresentFavoriteRecipeCell", for: indexPath) as? PresentFavoriteTableViewCell
+        
+        
+        let recipe = recipes[indexPath.row]
+        print(recipe.recipeName)
+        if let recipeName = recipe.recipeName, let ingredients = recipe.ingredients {
+            cell!.configure(recipeName: recipeName, recipeIngredients: ingredients, forXpeople: Int(recipe.forXpeople), recipeTime: Double(recipe.timeToPrepare), image: recipe.image!)
+        }
+        return cell!
     }
-    
 }
 
 extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
@@ -88,5 +101,15 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
         let selectRecipe = recipes[indexPath.row]
         self.performSegue(withIdentifier: "segueToFavoriteRecipeClicked", sender: selectRecipe)
         
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let index = indexPath.row
+            let selectFavoriteRecipe = recipes[indexPath.row]
+            manager.viewContext.delete(selectFavoriteRecipe)
+            recipes.remove(at: index)
+            tableView.deleteRows(at: [indexPath], with: .left)
+            
+        }
     }
 }

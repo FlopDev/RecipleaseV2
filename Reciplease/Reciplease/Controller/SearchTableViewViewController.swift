@@ -38,7 +38,7 @@ extension SearchTableViewViewController: UITableViewDataSource {
     
     // Méthode appelée pour configurer et retourner une cellule de tableau à afficher à l'index spécifié
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PresentRecipeCell", for: indexPath) as? PresentTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewViewController.recipeCell, for: indexPath) as? PresentTableViewCell else {
             return UITableViewCell()
         }
         
