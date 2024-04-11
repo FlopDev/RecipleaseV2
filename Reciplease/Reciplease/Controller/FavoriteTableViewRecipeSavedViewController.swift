@@ -102,6 +102,7 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
         self.performSegue(withIdentifier: "segueToFavoriteRecipeClicked", sender: selectRecipe)
         
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let index = indexPath.row
