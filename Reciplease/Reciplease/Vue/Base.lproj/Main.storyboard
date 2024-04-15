@@ -129,7 +129,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="favoriteRecipePicture" destination="Uro-Rm-Snz" id="Owu-HO-OUO"/>
+                                            <outlet property="favoriteRecipePicture" destination="Uro-Rm-Snz" id="XZo-pw-Fhv"/>
                                             <outlet property="forXPeople" destination="fLu-4Z-qIB" id="GCs-BC-64S"/>
                                             <outlet property="recipeIngredients" destination="WbI-iQ-nwf" id="kGa-Dd-cLE"/>
                                             <outlet property="recipeName" destination="UGG-IV-qWv" id="Xwq-2G-kvP"/>

@@ -7,12 +7,14 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class PresentFavoriteTableViewCell: UITableViewCell {
 
     // ne marche pas, je récupere pas la cellule coorrectement
     
     @IBOutlet weak var recipeName: UILabel!
+    
     
     @IBOutlet weak var favoriteRecipePicture: UIImageView!
     @IBOutlet weak var timeToPrepare: UILabel!
@@ -37,10 +39,12 @@ class PresentFavoriteTableViewCell: UITableViewCell {
     }
     func getImage(image: String) {
        let url = URL(string: image)!
-    if let data = try? Data(contentsOf: url) {
-               // Create Image and Update Image View
-        favoriteRecipePicture.image = UIImage(data: data)
-      }
+        DispatchQueue.main.async {
+            if let data = try? Data(contentsOf: url) {
+                // Create Image and Update Image View
+                self.favoriteRecipePicture.image = UIImage(data: data)
+            }
+        }
     }
     
    //private func addShadow() {

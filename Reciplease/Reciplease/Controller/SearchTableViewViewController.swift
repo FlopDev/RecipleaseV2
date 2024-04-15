@@ -43,11 +43,11 @@ extension SearchTableViewViewController: UITableViewDataSource {
         }
         
         let recipe = recipes[indexPath.row].recipe
-        let igredients = recipe.ingredients
+        let ingredients = recipe.ingredients
             .map { $0.text }
             .joined(separator: ", ")
         cell.configure(recipeName: recipe.label,
-                       recipeIngredients: "\(igredients)",
+                       recipeIngredients: "\(ingredients)",
                        recipeTime: Double((recipe.totalTime)),
                        forXpeople: recipe.yield, image: recipe.image)
         return cell

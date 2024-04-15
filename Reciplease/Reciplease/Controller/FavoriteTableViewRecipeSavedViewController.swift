@@ -35,16 +35,8 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         } catch {
             print("error => \(error)")
         }
+        favoriteTableView.reloadData()
     }
-    
-    
-   // func getImage(image: String) {
-   //    let url = URL(string: image)!
-   // if let data = try? Data(contentsOf: url) {
-   //            // Create Image and Update Image View
-   //     favoriteRecipeImage.image = UIImage(data: data)
-   //   }
-   // }
     
 
     /*

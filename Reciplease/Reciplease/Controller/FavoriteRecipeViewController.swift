@@ -30,10 +30,18 @@ class FavoriteRecipeViewController: UIViewController {
         recipeNameLabel.text = recipe.recipeName
         timeToPrepareLabel.text = "\(recipe.timeToPrepare) min"
         forXPeopleLabel.text = "for \(recipe.forXpeople)p"
+        
+        getImage()
         // Do any additional setup after loading the view.
     }
     
-
+    func getImage() {
+        let url = URL(string: recipe.image!)!
+        if let data = try? Data(contentsOf: url) {
+               // Create Image and Update Image View
+            recipeImageView.image = UIImage(data: data)
+           }
+    }
     /*
     // MARK: - Navigation
 
