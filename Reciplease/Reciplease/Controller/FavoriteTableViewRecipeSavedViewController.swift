@@ -99,7 +99,17 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
         if editingStyle == .delete {
             let index = indexPath.row
             let selectFavoriteRecipe = recipes[indexPath.row]
+            print(manager.viewContext)
             manager.viewContext.delete(selectFavoriteRecipe)
+            do {
+                // Enregistrez les modifications apportées au contexte pour finaliser la suppression
+                try manager.viewContext.save()
+                // La suppression a réussi
+            } catch {
+                // Une erreur s'est produite lors de la suppression
+                print("Erreur lors de la suppression de l'objet : \(error)")
+            }
+            print(manager.viewContext)
             recipes.remove(at: index)
             tableView.deleteRows(at: [indexPath], with: .left)
             
