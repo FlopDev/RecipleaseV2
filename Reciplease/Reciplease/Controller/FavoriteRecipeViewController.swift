@@ -35,6 +35,12 @@ class FavoriteRecipeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func unfavoriteButton(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    
     func getImage() {
         let url = URL(string: recipe.image!)!
         if let data = try? Data(contentsOf: url) {

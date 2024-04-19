@@ -249,6 +249,9 @@
                     <navigationItem key="navigationItem" title="Reciplease" id="FI8-l1-8VB">
                         <barButtonItem key="rightBarButtonItem" image="star.fill" catalog="system" id="3lB-rd-bkP">
                             <color key="tintColor" red="0.24861714239999999" green="0.59005951879999996" blue="0.36496335270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="unfavoriteButton:" destination="PRf-lT-NVM" id="Ajn-nf-0x9"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -277,16 +280,16 @@
                                 <rect key="frame" x="0.0" y="153" width="393" height="119.33333333333331"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="CHu-oh-cyc">
-                                        <rect key="frame" x="0.0" y="15" width="393" height="87"/>
+                                        <rect key="frame" x="0.0" y="15" width="393" height="89.333333333333329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFO-lc-Uwy">
-                                                <rect key="frame" x="93" y="0.0" width="207" height="22.666666666666668"/>
+                                                <rect key="frame" x="93" y="0.0" width="207" height="25"/>
                                                 <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBj-wf-trS">
-                                                <rect key="frame" x="16.666666666666657" y="52.666666666666657" width="359.66666666666674" height="34.333333333333343"/>
+                                                <rect key="frame" x="16.666666666666657" y="55" width="359.66666666666674" height="34.333333333333343"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, cheese, sausages ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WRA-MH-fuj">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="34.333333333333336"/>
@@ -322,6 +325,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="CHu-oh-cyc" secondAttribute="trailing" id="DPB-Ue-2sS"/>
+                                    <constraint firstAttribute="bottom" secondItem="CHu-oh-cyc" secondAttribute="bottom" constant="15" id="Y2j-hR-hX5"/>
                                     <constraint firstItem="CHu-oh-cyc" firstAttribute="top" secondItem="RG5-Gz-9p4" secondAttribute="top" constant="15" id="b1W-Y6-D9n"/>
                                     <constraint firstItem="CHu-oh-cyc" firstAttribute="leading" secondItem="RG5-Gz-9p4" secondAttribute="leading" id="tcI-MQ-6ss"/>
                                 </constraints>
