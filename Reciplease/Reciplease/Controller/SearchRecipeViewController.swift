@@ -69,6 +69,14 @@ class SearchRecipeViewController: UIViewController {
        }
     }
     
+    @IBAction func clearIngredients(_ sender: UIButton) {
+        DispatchQueue.main.async {
+            self.ingredientsListLabel.text = ""
+            self.ingredients = ""
+        }
+    }
+    
+    
     // MARK: - Alert
     func presentAlert(title: String, message: String) {
         

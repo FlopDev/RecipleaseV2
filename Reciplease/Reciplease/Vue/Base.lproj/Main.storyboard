@@ -364,6 +364,9 @@
                                             <fontDescription key="titleFontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="clearIngredients:" destination="ZZZ-nV-n4p" eventType="touchUpInside" id="rgD-pw-y8I"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
