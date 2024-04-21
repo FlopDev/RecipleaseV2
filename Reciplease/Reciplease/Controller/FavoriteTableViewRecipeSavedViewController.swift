@@ -94,6 +94,14 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
         self.performSegue(withIdentifier: "segueToFavoriteRecipeClicked", sender: selectRecipe)
         
     }
+    func presentAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -108,6 +116,7 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
             } catch {
                 // Une erreur s'est produite lors de la suppression
                 print("Erreur lors de la suppression de l'objet : \(error)")
+                presentAlert(title: "Backup of the recipe failed", message: "Check your network connection.")
             }
             print(manager.viewContext)
             recipes.remove(at: index)
