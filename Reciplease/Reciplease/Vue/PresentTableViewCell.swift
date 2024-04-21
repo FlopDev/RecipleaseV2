@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PresentTableViewCell: UITableViewCell {
     @IBOutlet weak var recipeName: UILabel!
@@ -39,9 +40,15 @@ class PresentTableViewCell: UITableViewCell {
     func getImage(image: String) {
        let url = URL(string: image)!
         DispatchQueue.main.async {
-            if let data = try? Data(contentsOf: url) {
-                // Create Image and Update Image View
-                self.recipeImage.image = UIImage(data: data)
+            
+            AF.request(url).responseData { response in
+                switch response.result {
+                case .success(let data):
+                    self.recipeImage.image = UIImage(data: data)
+                    // Traitement des données reçues ici
+                case .failure(let error):
+                    print("Erreur de requête : \(error)")
+                }
             }
         }
     }

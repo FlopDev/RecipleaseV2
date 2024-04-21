@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SoughtRecipeViewController: UIViewController {
     
@@ -46,10 +47,22 @@ class SoughtRecipeViewController: UIViewController {
     
     func getImage() {
         let url = URL(string: recipe.recipe.image)!
-        if let data = try? Data(contentsOf: url) {
-               // Create Image and Update Image View
-            recipeImageView.image = UIImage(data: data)
-           }
+        
+        AF.request(url).responseData { response in
+            switch response.result {
+            case .success(let data):
+                self.recipeImageView.image = UIImage(data: data)
+                // Traitement des données reçues ici
+            case .failure(let error):
+                print("Erreur de requête : \(error)")
+            }
+        }
+
+        
+        //if let data = try? Data(contentsOf: url) {
+        //       // Create Image and Update Image View
+        //    recipeImageView.image = UIImage(data: data)
+        //   }
     }
 
     @IBAction func makeFavorite(_ sender: Any) {
