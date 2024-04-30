@@ -22,10 +22,18 @@ class FakeResponseData {
     // Get the bundle to get Recipe.json
     static var recipeCorrectData: Data {
         let bundle = Bundle(for: FakeResponseData.self)
-        let url = bundle.url(forResource: "Recipe", withExtension: "json")
-        let data = try! Data(contentsOf: url!)
-        return data
+        if let url = bundle.url(forResource: "Recipe", withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                return data
+            } catch {
+                fatalError("Error loading data from URL: \(error)")
+            }
+        } else {
+             fatalError("Resource 'Recipe.json' not found in test bundle")
+        }
     }
+
     // create the incorrectData
     static let recipeIncorrectData = "error".data(using: .utf8)!
   

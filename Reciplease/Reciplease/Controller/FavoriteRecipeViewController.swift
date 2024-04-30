@@ -11,6 +11,8 @@ import Alamofire
 class FavoriteRecipeViewController: UIViewController {
     
     var recipe: FavoriteRecipe!
+    let manager = CoreDataStack()
+    let tableViewController = FavoriteTableViewRecipeSavedViewController()
     
     
 
@@ -38,6 +40,8 @@ class FavoriteRecipeViewController: UIViewController {
     
     
     @IBAction func unfavoriteButton(_ sender: UIBarButtonItem) {
+        manager.viewContext.delete(recipe)
+        presentAlert(title: "Recipe deleted", message: "The recipe has been successfully deleted from the database")
         
     }
     
@@ -54,13 +58,23 @@ class FavoriteRecipeViewController: UIViewController {
             }
         }
     }
-    /*
-    // MARK: - Navigation
+    
+    func presentAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        // add an action (button)
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(okAction)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
-    */
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "segueToFavoriteTableView" {
+                _ = segue.destination as! FavoriteTableViewRecipeSavedViewController
+            }
+        }
 }

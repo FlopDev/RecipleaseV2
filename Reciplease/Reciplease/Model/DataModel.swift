@@ -12,7 +12,6 @@ import Foundation
 //
 //   let RecipeFound = try? JSONDecoder().decode(RecipeFound.self, from: jsonData)
 
-
 // MARK: - RecipeFound
 struct RecipeFound: Codable {
     let q: String
@@ -43,15 +42,38 @@ struct Recipe: Codable {
     let mealType, dishType: [String]
     let totalNutrients, totalDaily: [String: Total]
     let digest: [Digest]
-    let tags: [String]?
+    //let tags: [String]?
+    
+    init(name: String, url: String) {
+        self.label = name
+        self.url = url
+        image = ""
+        uri = ""
+        source = ""
+        shareAs = ""
+        yield = 0
+        dietLabels = []
+        healthLabels = []
+        cautions = []
+        ingredientLines = []
+        ingredients = []
+        calories = 0.0
+        totalWeight = 0.0
+        totalTime = 0.0
+        totalNutrients = [:]
+        totalDaily = [:]
+        digest = []
+        mealType = []
+        dishType = []
+    }
 }
 
-enum CuisineType: String, Codable {
-    case american = "american"
-    case italian = "italian"
-    case mexican = "mexican"
-    case southAmerican = "south american"
-}
+//enum CuisineType: String, Codable {
+//    case american = "american"
+//    case italian = "italian"
+//    case mexican = "mexican"
+//    case southAmerican = "south american"
+//}
 
 // MARK: - Digest
 struct Digest: Codable {

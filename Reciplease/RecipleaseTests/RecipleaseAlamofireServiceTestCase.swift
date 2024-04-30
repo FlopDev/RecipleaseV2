@@ -97,7 +97,7 @@ final class RecipleaseAlamofireServiceTestCase: XCTestCase {
             let text = "Chicken rice tomatoe"
             XCTAssertTrue(success)
             XCTAssertNotNil(recipe)
-            print(recipe!)
+            //print(recipe!)
             XCTAssertEqual(recipe?.q, text)
             
         })

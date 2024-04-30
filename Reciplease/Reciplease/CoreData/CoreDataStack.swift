@@ -7,6 +7,9 @@
 
 import Foundation
 import CoreData
+import Alamofire
+
+
 final class CoreDataStack {
     
     // MARK: - Singleton
@@ -39,9 +42,9 @@ final class CoreDataStack {
         }
     }
     
-    func fetchData() {
-        let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
-    }
+   // func fetchData() {
+   //     let _: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
+   // }
     
     
     func deleteRecipe(recipe: FavoriteRecipe) {

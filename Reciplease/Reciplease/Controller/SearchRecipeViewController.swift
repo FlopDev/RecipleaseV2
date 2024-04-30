@@ -29,7 +29,7 @@ class SearchRecipeViewController: UIViewController {
     }
     
     // MARK: - Functions
-    // this button is pressed when the user have write all his ingredients and he wants the recipe
+    
     
     @IBAction func addIngredient(_ sender: Any) {
         
@@ -47,6 +47,7 @@ class SearchRecipeViewController: UIViewController {
         searchIngredientTextField.resignFirstResponder()
     }
     
+    // this button is pressed when the user have write all his ingredients and he wants the recipe
     @IBAction func searchForRecipeButton(_ sender: Any) {
         
         guard ingredients != "" else {
@@ -75,7 +76,6 @@ class SearchRecipeViewController: UIViewController {
             self.ingredients = ""
         }
     }
-    
     
     // MARK: - Alert
     func presentAlert(title: String, message: String) {

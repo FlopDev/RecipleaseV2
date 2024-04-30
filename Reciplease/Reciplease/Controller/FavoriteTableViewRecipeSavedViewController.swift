@@ -25,7 +25,6 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
@@ -37,27 +36,15 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         }
         favoriteTableView.reloadData()
     }
-    
-
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let recipe = sender as? FavoriteRecipe,
            let destination = segue.destination as? FavoriteRecipeViewController,
            segue.identifier == "segueToFavoriteRecipeClicked" {
             destination.recipe = recipe
             print("\(destination.recipe)")
-
         }
     }
-
 }
 
 extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
@@ -75,10 +62,7 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PresentFavoriteRecipeCell", for: indexPath) as? PresentFavoriteTableViewCell
-        
-        
         let recipe = recipes[indexPath.row]
-        print(recipe.recipeName)
         if let recipeName = recipe.recipeName, let ingredients = recipe.ingredients {
             cell!.configure(recipeName: recipeName, recipeIngredients: ingredients, forXpeople: Int(recipe.forXpeople), recipeTime: Double(recipe.timeToPrepare), image: recipe.image!)
         }
@@ -110,18 +94,13 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
             print(manager.viewContext)
             manager.viewContext.delete(selectFavoriteRecipe)
             do {
-                // Enregistrez les modifications apportées au contexte pour finaliser la suppression
                 try manager.viewContext.save()
-                // La suppression a réussi
             } catch {
-                // Une erreur s'est produite lors de la suppression
-                print("Erreur lors de la suppression de l'objet : \(error)")
                 presentAlert(title: "Backup of the recipe failed", message: "Check your network connection.")
             }
             print(manager.viewContext)
             recipes.remove(at: index)
             tableView.deleteRows(at: [indexPath], with: .left)
-            
         }
     }
 }

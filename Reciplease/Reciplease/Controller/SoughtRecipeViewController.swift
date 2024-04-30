@@ -57,12 +57,6 @@ class SoughtRecipeViewController: UIViewController {
                 print("Erreur de requête : \(error)")
             }
         }
-
-        
-        //if let data = try? Data(contentsOf: url) {
-        //       // Create Image and Update Image View
-        //    recipeImageView.image = UIImage(data: data)
-        //   }
     }
 
     @IBAction func makeFavorite(_ sender: Any) {
