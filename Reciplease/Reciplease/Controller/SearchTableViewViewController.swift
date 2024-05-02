@@ -8,32 +8,32 @@ import UIKit
 
 class SearchTableViewViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - Properties
     static var recipeCell = "PresentRecipeCell"
     var recipes: [Hit] = []
-
+    
+    // MARK: - Outlet
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let recipe = sender as? Hit,
            let destination = segue.destination as? SoughtRecipeViewController,
            segue.identifier == "segueToRecipeClicked" {
             destination.recipe = recipe
-            print("this is the recipe \(recipe)")
         }
     }
-
 }
+
 extension SearchTableViewViewController: UITableViewDataSource {
     
     // Méthode appelée pour configurer et retourner une cellule de tableau à afficher à l'index spécifié
@@ -72,9 +72,7 @@ extension SearchTableViewViewController: UITableViewDataSource {
 extension SearchTableViewViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("u tape on this cell")
         let selectRecipe = recipes[indexPath.row]
         self.performSegue(withIdentifier: "segueToRecipeClicked", sender: selectRecipe)
-        
     }
 }

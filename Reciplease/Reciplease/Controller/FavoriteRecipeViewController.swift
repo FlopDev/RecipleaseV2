@@ -10,12 +10,11 @@ import Alamofire
 
 class FavoriteRecipeViewController: UIViewController {
     
+    // MARK: - Properties
     var recipe: FavoriteRecipe!
     let manager = CoreDataStack()
     let tableViewController = FavoriteTableViewRecipeSavedViewController()
     
-    
-
     // MARK: - Outlets
     @IBOutlet weak var returnButton: UINavigationItem!
     
@@ -38,13 +37,10 @@ class FavoriteRecipeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
     @IBAction func unfavoriteButton(_ sender: UIBarButtonItem) {
         manager.viewContext.delete(recipe)
         presentAlert(title: "Recipe deleted", message: "The recipe has been successfully deleted from the database")
-        
     }
-    
     
     func getImage() {
         let url = URL(string: recipe.image!)!
@@ -60,21 +56,21 @@ class FavoriteRecipeViewController: UIViewController {
     }
     
     func presentAlert(title: String, message: String) {
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         // add an action (button)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             self.navigationController?.popViewController(animated: true)
         }
         alert.addAction(okAction)
-
+        
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "segueToFavoriteTableView" {
-                _ = segue.destination as! FavoriteTableViewRecipeSavedViewController
-            }
+        if segue.identifier == "segueToFavoriteTableView" {
+            _ = segue.destination as! FavoriteTableViewRecipeSavedViewController
         }
+    }
 }

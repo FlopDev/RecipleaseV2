@@ -9,11 +9,15 @@ import UIKit
 import CoreData
 
 class FavoriteTableViewRecipeSavedViewController: UIViewController {
-
-    @IBOutlet weak var favoriteTableView: UITableView!
+    
+    // MARK: - Properties
     static var favoriteRecipeCell = "favoriteRecipeCell"
     var recipes: [FavoriteRecipe] = []
     let manager = CoreDataStack()
+    
+    // MARK: - Outlets
+    @IBOutlet weak var favoriteTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
@@ -42,7 +46,6 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
            let destination = segue.destination as? FavoriteRecipeViewController,
            segue.identifier == "segueToFavoriteRecipeClicked" {
             destination.recipe = recipe
-            print("\(destination.recipe)")
         }
     }
 }
@@ -73,13 +76,11 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
 extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("u tape on this cell")
         let selectRecipe = recipes[indexPath.row]
         self.performSegue(withIdentifier: "segueToFavoriteRecipeClicked", sender: selectRecipe)
-        
     }
+    
     func presentAlert(title: String, message: String) {
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         // add an action (button)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -98,7 +99,6 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
             } catch {
                 presentAlert(title: "Backup of the recipe failed", message: "Check your network connection.")
             }
-            print(manager.viewContext)
             recipes.remove(at: index)
             tableView.deleteRows(at: [indexPath], with: .left)
         }

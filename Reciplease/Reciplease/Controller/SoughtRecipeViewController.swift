@@ -10,19 +10,21 @@ import Alamofire
 
 class SoughtRecipeViewController: UIViewController {
     
+    // MARK: - Properties
     var recipe: Hit!
     
+    // MARK: - Outlets
     @IBOutlet weak var makeFavoriteButton: UIBarButtonItem!
     @IBOutlet weak var timeToPrepareLabel: UILabel!
-    
     @IBOutlet weak var forXPeople: UILabel!
     @IBOutlet weak var getDirectionButton: UIButton!
     @IBOutlet weak var ingredientsListLabel: UILabel!
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         let ingredients = "\(recipe.recipe.ingredientLines)"
         let ingredientsList = ingredients
@@ -30,7 +32,6 @@ class SoughtRecipeViewController: UIViewController {
             .replacingOccurrences(of: ",", with: "\n-")
         
         ingredientsListLabel.text = ingredientsList
-        
         recipeNameLabel.text = "\(recipe.recipe.label)"
         timeToPrepareLabel.text = "\(recipe.recipe.totalTime) min ⏲️"
         forXPeople.text = "for \(recipe.recipe.yield) 👨"
@@ -58,11 +59,10 @@ class SoughtRecipeViewController: UIViewController {
             }
         }
     }
-
+    
     @IBAction func makeFavorite(_ sender: Any) {
         CoreDataStack.sharedInstance.saveFavoriteRecipe(recipe: recipe)
         // makeFavoriteButton.image = UIImage(named: "star.fill")
-        // TODO: - Rajouter pop up pour avertir que c'est bien save ?
         presentAlert(title: "Recipe Saved", message: "You can find the recipe by clicking on Favorite Button")
     }
     

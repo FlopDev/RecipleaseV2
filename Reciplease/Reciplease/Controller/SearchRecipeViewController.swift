@@ -21,11 +21,10 @@ class SearchRecipeViewController: UIViewController {
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var searchIngredientTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.isHidden = true
-        
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - Functions
@@ -38,7 +37,6 @@ class SearchRecipeViewController: UIViewController {
         } else {
             ingredientsListLabel.text! += "- \(searchIngredientTextField.text!)\n"
             ingredients += " \(searchIngredientTextField.text!)"
-            print("Les ingrédients sont : \(ingredients) ")
         }
         searchIngredientTextField.text = ""
     }
@@ -54,20 +52,20 @@ class SearchRecipeViewController: UIViewController {
             self.presentAlert(title: "OK", message: "Vous n'avez rien dans votre frigot ? Veuillez rentrer un ingredient")
             return
         }
-       shared.fetchAPIData(ingredient: ingredients) {  success, data in
-           guard success == true else {
-               print("Oups ! Il y a une erreur.")
-               return
-           }
-
-           DispatchQueue.main.async {
-               self.recipes = data!.hits
-               self.ingredients = ""
-               self.activityIndicator.isHidden = false
-               self.ingredientsListLabel.text = ""
-               self.performSegue(withIdentifier: "segueToTableViewVC", sender: self.recipes)
-           }
-       }
+        shared.fetchAPIData(ingredient: ingredients) {  success, data in
+            guard success == true else {
+                print("Oups ! Il y a une erreur.")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.recipes = data!.hits
+                self.ingredients = ""
+                self.activityIndicator.isHidden = false
+                self.ingredientsListLabel.text = ""
+                self.performSegue(withIdentifier: "segueToTableViewVC", sender: self.recipes)
+            }
+        }
     }
     
     @IBAction func clearIngredients(_ sender: UIButton) {
@@ -87,13 +85,13 @@ class SearchRecipeViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-     // MARK: - Navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-             if segue.identifier == "segueToTableViewVC" {
-                 let VC = segue.destination as! SearchTableViewViewController
-                 VC.recipes = recipes
-             }
-         }
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToTableViewVC" {
+            let VC = segue.destination as! SearchTableViewViewController
+            VC.recipes = recipes
+        }
+    }
 }
 
 extension SearchRecipeViewController: UITextFieldDelegate {

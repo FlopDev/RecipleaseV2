@@ -42,11 +42,6 @@ final class CoreDataStack {
         }
     }
     
-   // func fetchData() {
-   //     let _: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
-   // }
-    
-    
     func deleteRecipe(recipe: FavoriteRecipe) {
         viewContext.delete(recipe)
     }
