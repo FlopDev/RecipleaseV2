@@ -21,7 +21,7 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
-        guard let favoritesRecipes = try? CoreDataStack.sharedInstance.viewContext.fetch(request) else {
+        guard (try? CoreDataStack.sharedInstance.viewContext.fetch(request)) != nil else {
             return
         }
     }

@@ -17,7 +17,6 @@ class FavoriteRecipeViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var returnButton: UINavigationItem!
-    
     @IBOutlet weak var getDirectionButton: UIButton!
     @IBOutlet weak var ingredientsListLabel: UILabel!
     @IBOutlet weak var recipeNameLabel: UILabel!
