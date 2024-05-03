@@ -24,9 +24,6 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         guard let favoritesRecipes = try? CoreDataStack.sharedInstance.viewContext.fetch(request) else {
             return
         }
-        print(favoritesRecipes.count)
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,7 +89,6 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
         if editingStyle == .delete {
             let index = indexPath.row
             let selectFavoriteRecipe = recipes[indexPath.row]
-            print(manager.viewContext)
             manager.viewContext.delete(selectFavoriteRecipe)
             do {
                 try manager.viewContext.save()
