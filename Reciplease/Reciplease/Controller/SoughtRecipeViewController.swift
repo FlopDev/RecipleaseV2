@@ -12,6 +12,7 @@ class SoughtRecipeViewController: UIViewController {
     
     // MARK: - Properties
     var recipe: Hit!
+    @IBOutlet weak var informationButton: UIBarButtonItem!
     
     // MARK: - Outlets
     @IBOutlet weak var makeFavoriteButton: UIBarButtonItem!
@@ -44,6 +45,10 @@ class SoughtRecipeViewController: UIViewController {
         } else {
             presentAlert(title: "Error", message: "Sorry, we can't open this URL")
         }
+    }
+    
+    @IBAction func didClickInformationButton(_ sender: Any) {
+        presentAlert(title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
     }
     
     func getImage() {

@@ -22,6 +22,7 @@ class FavoriteRecipeViewController: UIViewController {
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var timeToPrepareLabel: UILabel!
+    @IBOutlet weak var informationButton: UIBarButtonItem!
     @IBOutlet weak var forXPeopleLabel: UILabel!
     
     override func viewDidLoad() {
@@ -35,12 +36,13 @@ class FavoriteRecipeViewController: UIViewController {
         getImage()
         // Do any additional setup after loading the view.
     }
+    // MARK: - Function
     
     @IBAction func unfavoriteButton(_ sender: UIBarButtonItem) {
         manager.viewContext.delete(recipe)
         presentAlert(title: "Recipe deleted", message: "The recipe has been successfully deleted from the database")
     }
-    
+   
     func getImage() {
         let url = URL(string: recipe.image!)!
         AF.request(url).responseData { response in
@@ -54,6 +56,9 @@ class FavoriteRecipeViewController: UIViewController {
         }
     }
     
+    @IBAction func didClickInformationButton(_ sender: Any) {
+        presentAlert(title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
+    }
     func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         // add an action (button)

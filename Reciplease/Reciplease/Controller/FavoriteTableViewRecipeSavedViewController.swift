@@ -37,6 +37,11 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         }
         favoriteTableView.reloadData()
     }
+
+    @IBAction func didClickInformationButton(_ sender: Any) {
+        presentAlert(title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let recipe = sender as? FavoriteRecipe,
