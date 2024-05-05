@@ -30,47 +30,69 @@ class SearchRecipeViewController: UIViewController {
     // MARK: - Functions
     
     
+    // Function to handle adding ingredients
     @IBAction func addIngredient(_ sender: Any) {
-        
+        // Check if the search ingredient text field is empty
         if searchIngredientTextField.text!.isEmpty == true {
-            self.presentAlert(title: "Erreur", message: "Veuillez rentrer un ingredient à rechercher")
+            // If empty, present an alert to inform the user
+            self.presentAlert(title: "Error", message: "Please enter an ingredient to search for")
         } else {
+            // If not empty, add the ingredient to the ingredients list label
             ingredientsListLabel.text! += "- \(searchIngredientTextField.text!)\n"
+            // Also add the ingredient to the ingredients string
             ingredients += " \(searchIngredientTextField.text!)"
         }
+        // Clear the search ingredient text field
         searchIngredientTextField.text = ""
     }
-    
+
+    // Function to dismiss the keyboard when tapped outside the text field
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        // Resign the first responder status of the search ingredient text field
         searchIngredientTextField.resignFirstResponder()
     }
+
     
     // this button is pressed when the user have write all his ingredients and he wants the recipe
+    // Function to search for recipes
     @IBAction func searchForRecipeButton(_ sender: Any) {
-        
+        // Check if there are ingredients entered
         guard ingredients != "" else {
-            self.presentAlert(title: "OK", message: "Vous n'avez rien dans votre frigot ? Veuillez rentrer un ingredient")
+            // If no ingredients, present an alert to inform the user
+            self.presentAlert(title: "OK", message: "You don't have anything in your fridge? Please enter an ingredient")
             return
         }
-        shared.fetchAPIData(ingredient: ingredients) {  success, data in
+        // Call the API to fetch recipe data using the entered ingredients
+        shared.fetchAPIData(ingredient: ingredients) { success, data in
+            // Check if API call was successful
             guard success == true else {
-                print("Oups ! Il y a une erreur.")
+                // If not successful, print an error message
+                print("Oops! There's an error.")
                 return
             }
-            
+            // Update UI on the main thread
             DispatchQueue.main.async {
+                // Store the fetched recipes
                 self.recipes = data!.hits
+                // Clear the ingredients for the next search
                 self.ingredients = ""
+                // Show the activity indicator
                 self.activityIndicator.isHidden = false
+                // Clear the ingredients list label
                 self.ingredientsListLabel.text = ""
+                // Perform segue to the table view controller to display the recipes
                 self.performSegue(withIdentifier: "segueToTableViewVC", sender: self.recipes)
             }
         }
     }
-    
+
+    // Function to clear entered ingredients
     @IBAction func clearIngredients(_ sender: UIButton) {
+        // Update UI on the main thread
         DispatchQueue.main.async {
+            // Clear the ingredients list label
             self.ingredientsListLabel.text = ""
+            // Clear the ingredients
             self.ingredients = ""
         }
     }

@@ -26,10 +26,12 @@ class SearchTableViewViewController: UIViewController {
     }
     
     // MARK: - Functions
+    // Tell the user how we use his data
     @IBAction func didClickInformationButton(_ sender: Any) {
         presentAlert(title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
     }
     
+    // display pop up to the user
     func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         // add an action (button)
@@ -39,6 +41,7 @@ class SearchTableViewViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    // segue to send data to nexr Controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let recipe = sender as? Hit,
            let destination = segue.destination as? SoughtRecipeViewController,
@@ -50,7 +53,7 @@ class SearchTableViewViewController: UIViewController {
 
 extension SearchTableViewViewController: UITableViewDataSource {
     
-    // Méthode appelée pour configurer et retourner une cellule de tableau à afficher à l'index spécifié
+    // Show the cell to the user at the good index
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewViewController.recipeCell, for: indexPath) as? PresentTableViewCell else {
             return UITableViewCell()
