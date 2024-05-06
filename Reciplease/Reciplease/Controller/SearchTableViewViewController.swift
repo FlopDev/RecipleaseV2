@@ -9,7 +9,7 @@ import UIKit
 class SearchTableViewViewController: UIViewController {
     
     // MARK: - Properties
-    static var recipeCell = "PresentRecipeCell"
+    static var recipeCell = "ReusableCell"
     var recipes: [Hit] = []
     
     // MARK: - Outlet
@@ -18,26 +18,20 @@ class SearchTableViewViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
+        tableView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
         super.viewDidLoad()
     }
     
     // MARK: - Functions
     // Tell the user how we use his data
     @IBAction func didClickInformationButton(_ sender: Any) {
-        presentAlert(title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
-    }
-    
-    // display pop up to the user
-    func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
+        Helper.presentAlert(from: self, title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
     }
     
     // MARK: - Navigation
@@ -55,18 +49,16 @@ extension SearchTableViewViewController: UITableViewDataSource {
     
     // Show the cell to the user at the good index
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewViewController.recipeCell, for: indexPath) as? PresentTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewViewController.recipeCell, for: indexPath) as? TableViewCell else {
             return UITableViewCell()
         }
-        
         let recipe = recipes[indexPath.row].recipe
         let ingredients = recipe.ingredients
             .map { $0.text }
             .joined(separator: ", ")
         cell.configure(recipeName: recipe.label,
                        recipeIngredients: "\(ingredients)",
-                       recipeTime: Double((recipe.totalTime)),
-                       forXpeople: recipe.yield, image: recipe.image)
+                       forXpeople: recipe.yield, recipeTime: Double((recipe.totalTime)), image: recipe.image)
         return cell
     }
     

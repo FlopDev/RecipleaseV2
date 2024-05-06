@@ -11,7 +11,9 @@ import CoreData
 class FavoriteTableViewRecipeSavedViewController: UIViewController {
     
     // MARK: - Properties
-    static var favoriteRecipeCell = "favoriteRecipeCell"
+    static var favoriteRecipeCell = "ReusableCell"
+    
+    
     var recipes: [FavoriteRecipe] = []
     let manager = CoreDataStack()
     
@@ -20,31 +22,29 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
     
     // Fetches the saved favorite recipes from CoreData when the view loads.
     override func viewDidLoad() {
+        favoriteTableView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
         super.viewDidLoad()
-        let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
-        guard (try? CoreDataStack.sharedInstance.viewContext.fetch(request)) != nil else {
-            return
-        }
     }
-
+    
     // Reloads the table view data when the view appears to reflect any changes in the saved recipes.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
         do {
             recipes = try manager.viewContext.fetch(request)
-            favoriteTableView.reloadData()
+            DispatchQueue.main.async {
+                self.favoriteTableView.reloadData()
+            }
         } catch {
             print("error => \(error)")
         }
-        favoriteTableView.reloadData()
     }
-
+    
     // Presents a privacy notice alert to inform users about data storage practices.
     @IBAction func didClickInformationButton(_ sender: Any) {
-        presentAlert(title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
+        Helper.presentAlert(from: self, title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
     }
-
+    
     // Prepares data to be passed to the next view controller when a segue is triggered.
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,7 +55,7 @@ class FavoriteTableViewRecipeSavedViewController: UIViewController {
         }
     }
 }
-    
+
 
 // UITableViewDataSource Extension
 extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
@@ -76,7 +76,7 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDataSource {
     
     // Configures and returns a cell for the specified row.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PresentFavoriteRecipeCell", for: indexPath) as? PresentFavoriteTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as? TableViewCell
         let recipe = recipes[indexPath.row]
         if let recipeName = recipe.recipeName, let ingredients = recipe.ingredients {
             cell!.configure(recipeName: recipeName, recipeIngredients: ingredients, forXpeople: Int(recipe.forXpeople), recipeTime: Double(recipe.timeToPrepare), image: recipe.image!)
@@ -93,14 +93,7 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
         self.performSegue(withIdentifier: "segueToFavoriteRecipeClicked", sender: selectRecipe)
     }
     
-    // Presents an alert for failed operations or successful deletions.
-    func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        // Adds an action button to the alert.
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        // Shows the alert.
-        self.present(alert, animated: true, completion: nil)
-    }
+    // Presents an alert for failed operations or successful deletions
     
     // Handles the deletion of a row in the table view.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -111,7 +104,7 @@ extension FavoriteTableViewRecipeSavedViewController: UITableViewDelegate {
             do {
                 try manager.viewContext.save()
             } catch {
-                presentAlert(title: "Backup of the recipe failed", message: "Check your network connection.")
+                Helper.presentAlert(from: self, title: "Backup of the recipe failed", message: "Check your network connection.")
             }
             recipes.remove(at: index)
             tableView.deleteRows(at: [indexPath], with: .left)

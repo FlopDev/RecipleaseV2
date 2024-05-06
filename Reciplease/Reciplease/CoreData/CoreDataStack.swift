@@ -13,18 +13,15 @@ import Alamofire
 final class CoreDataStack {
     
     // MARK: - Singleton
-    
     static let sharedInstance = CoreDataStack()
     
     // MARK: - Public
-    
     var viewContext: NSManagedObjectContext {
-        //On pourra utiliser notre contexte partout dans notre code en écrivant simplement  CoreDataStack.sharedInstance.viewContext
         return CoreDataStack.sharedInstance.persistentContainer.viewContext
     }
     
+    // Save the recipe in CoreData
     func saveFavoriteRecipe(recipe: Hit) {
-        // je peu utiliser viewContext directe au lieu du singleton ?
         let favoriteRecipe = FavoriteRecipe(context: CoreDataStack.sharedInstance.viewContext)
         favoriteRecipe.forXpeople = Int16(recipe.recipe.yield)
         favoriteRecipe.image = recipe.recipe.image
@@ -42,6 +39,7 @@ final class CoreDataStack {
         }
     }
     
+    // dealete the recipe from CoreData
     func deleteRecipe(recipe: FavoriteRecipe) {
         viewContext.delete(recipe)
     }

@@ -48,14 +48,14 @@ class SoughtRecipeViewController: UIViewController {
             UIApplication.shared.open(urlToOpen)
         } else {
             // If URL is invalid, present an error alert
-            presentAlert(title: "Error", message: "Sorry, we can't open this URL")
+            Helper.presentAlert(from: self, title: "Error", message: "Sorry, we can't open this URL")
         }
     }
 
     // Function to show privacy notice
     @IBAction func didClickInformationButton(_ sender: Any) {
         // Present a privacy notice alert to the user
-        presentAlert(title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
+        Helper.presentAlert(from: self, title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
     }
 
     // Function to fetch and display the recipe image
@@ -81,17 +81,7 @@ class SoughtRecipeViewController: UIViewController {
         // Save the recipe as favorite using CoreData
         CoreDataStack.sharedInstance.saveFavoriteRecipe(recipe: recipe)
         // Present a confirmation alert to the user
-        presentAlert(title: "Recipe Saved", message: "You can find the recipe by clicking on Favorite Button")
-    }
-
-    // Function to present an alert
-    func presentAlert(title: String, message: String) {
-        // Create an alert controller
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        // Add an OK action button
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        // Present the alert
-        self.present(alert, animated: true, completion: nil)
+        Helper.presentAlert(from: self, title: "Recipe Saved", message: "You can find the recipe by clicking on Favorite Button")
     }
 
     // MARK: - Navigation

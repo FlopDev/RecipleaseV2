@@ -21,6 +21,9 @@
 		CB7824952B9A050B006A750E /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB7824932B9A050B006A750E /* Reciplease.xcdatamodeld */; };
 		CB7824972B9A0577006A750E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7824962B9A0577006A750E /* CoreDataStack.swift */; };
 		CB7824992B9A11DD006A750E /* FavoriteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7824982B9A11DD006A750E /* FavoriteRecipe.swift */; };
+		CB80BE632BE952ED006427BA /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80BE622BE952ED006427BA /* Helper.swift */; };
+		CB80BE662BE97A49006427BA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80BE642BE97A49006427BA /* TableViewCell.swift */; };
+		CB80BE672BE97A49006427BA /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB80BE652BE97A49006427BA /* TableViewCell.xib */; };
 		CB8216AE2BD7CC1E00538A16 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8216A42BD6BD7A00538A16 /* FakeResponseData.swift */; };
 		CB8216AF2BD7CC1E00538A16 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8216A62BD6BD8300538A16 /* MockURLProtocol.swift */; };
 		CB8216B02BD7CC1E00538A16 /* TestSaveFavoriteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8216AA2BD6BD9900538A16 /* TestSaveFavoriteRecipe.swift */; };
@@ -61,6 +64,9 @@
 		CB7824942B9A050B006A750E /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		CB7824962B9A0577006A750E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		CB7824982B9A11DD006A750E /* FavoriteRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipe.swift; sourceTree = "<group>"; };
+		CB80BE622BE952ED006427BA /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		CB80BE642BE97A49006427BA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CB80BE652BE97A49006427BA /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		CB8216A22BD6BD7000538A16 /* Recipe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Recipe.json; sourceTree = "<group>"; };
 		CB8216A42BD6BD7A00538A16 /* FakeResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		CB8216A62BD6BD8300538A16 /* MockURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 			children = (
 				CBBDB88E2B873A5B00DBC678 /* API.swift */,
 				CBBDB8902B8740F800DBC678 /* DataModel.swift */,
+				CB80BE622BE952ED006427BA /* Helper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +192,8 @@
 				CB620DA62B74608B000C3778 /* Main.storyboard */,
 				CB620DAE2B74608F000C3778 /* LaunchScreen.storyboard */,
 				CB390A5A2BC4C4FE000DDDDB /* PresentFavoriteTableViewCell.swift */,
+				CB80BE642BE97A49006427BA /* TableViewCell.swift */,
+				CB80BE652BE97A49006427BA /* TableViewCell.xib */,
 			);
 			path = Vue;
 			sourceTree = "<group>";
@@ -277,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB620DB02B74608F000C3778 /* LaunchScreen.storyboard in Resources */,
+				CB80BE672BE97A49006427BA /* TableViewCell.xib in Resources */,
 				CB620DAD2B74608F000C3778 /* Assets.xcassets in Resources */,
 				CB620DA82B74608B000C3778 /* Main.storyboard in Resources */,
 			);
@@ -298,7 +308,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB7824952B9A050B006A750E /* Reciplease.xcdatamodeld in Sources */,
+				CB80BE662BE97A49006427BA /* TableViewCell.swift in Sources */,
 				CB21181B2B7A044A0089BC87 /* FavoriteTableViewRecipeSavedViewController.swift in Sources */,
+				CB80BE632BE952ED006427BA /* Helper.swift in Sources */,
 				CB96D0422B74657000E3210E /* SearchRecipeViewController.swift in Sources */,
 				CB7824972B9A0577006A750E /* CoreDataStack.swift in Sources */,
 				CB2118192B7A03FB0089BC87 /* SoughtRecipeViewController.swift in Sources */,

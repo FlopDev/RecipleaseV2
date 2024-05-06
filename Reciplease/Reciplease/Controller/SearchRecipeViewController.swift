@@ -35,7 +35,7 @@ class SearchRecipeViewController: UIViewController {
         // Check if the search ingredient text field is empty
         if searchIngredientTextField.text!.isEmpty == true {
             // If empty, present an alert to inform the user
-            self.presentAlert(title: "Error", message: "Please enter an ingredient to search for")
+            Helper.presentAlert(from: self, title: "Error", message: "Please enter an ingredient to search for")
         } else {
             // If not empty, add the ingredient to the ingredients list label
             ingredientsListLabel.text! += "- \(searchIngredientTextField.text!)\n"
@@ -59,15 +59,15 @@ class SearchRecipeViewController: UIViewController {
         // Check if there are ingredients entered
         guard ingredients != "" else {
             // If no ingredients, present an alert to inform the user
-            self.presentAlert(title: "OK", message: "You don't have anything in your fridge? Please enter an ingredient")
+            Helper.presentAlert(from: self, title: "OK", message: "You don't have anything in your fridge? Please enter an ingredient")
             return
         }
         // Call the API to fetch recipe data using the entered ingredients
         shared.fetchAPIData(ingredient: ingredients) { success, data in
             // Check if API call was successful
             guard success == true else {
-                // If not successful, print an error message
-                print("Oops! There's an error.")
+                // If not successful, print an error pop up to the user
+                Helper.presentAlert(from: self, title: "ERROR", message: "Oops! There's an error, check your internet connexion")
                 return
             }
             // Update UI on the main thread
@@ -95,16 +95,6 @@ class SearchRecipeViewController: UIViewController {
             // Clear the ingredients
             self.ingredients = ""
         }
-    }
-    
-    // MARK: - Alert
-    func presentAlert(title: String, message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
