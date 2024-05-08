@@ -712,6 +712,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="cguButton" destination="jby-60-K09" id="zKq-2v-5ao"/>
                         <outlet property="forXPeople" destination="1Jd-Pb-P0h" id="mGW-Dz-hbd"/>
                         <outlet property="getDirectionButton" destination="JNC-nT-GcM" id="lGA-SZ-6ZT"/>
                         <outlet property="informationButton" destination="jby-60-K09" id="lyP-9q-JwV"/>

@@ -25,6 +25,14 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        nameOfRecipe.isAccessibilityElement = true
+        nameOfRecipe.accessibilityHint = "est le nom de la recette"
+        ingredients.isAccessibilityElement = true
+        ingredients.accessibilityHint = "Sont les ingrédients présents dans la recette"
+        forXPeople.isAccessibilityElement = true
+        forXPeople.accessibilityHint = "Cela explique pour combien de personne est fait la recette"
+        timeToPrepare.isAccessibilityElement = true
+        timeToPrepare.accessibilityHint = "est le temps en minute qu'il faut pour la recette"
     }
     
     func configure(recipeName: String, recipeIngredients: String, forXpeople: Int, recipeTime: Double, image: String) {

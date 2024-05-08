@@ -25,11 +25,19 @@ class SearchRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.isHidden = true
+        clearButton.isAccessibilityElement = true
+        clearButton.accessibilityHint = "Ce bouton permet de nettoyer les éléments de la liste des ingrédients"
+        searchRecipeButton.isAccessibilityElement = true
+        searchRecipeButton.accessibilityHint = "Appuyer sur ce bouton quand vous avez renseignez des ingrédients"
+        searchIngredientTextField.isAccessibilityElement = true
+        searchIngredientTextField.accessibilityHint = "Veuillez renseignez des ingrédients, puis appuyer sur le bouton add"
+        addButton.isAccessibilityElement = true
+        addButton.accessibilityHint = "Veuillez appuyer sur le bouton Add quand vous avez renseignez un ingrédient dans le champs de texte à gauche de ce bouton"
+        ingredientsListLabel.isAccessibilityElement = true
+        ingredientsListLabel.accessibilityHint = "Cette liste contient les ingrédients que vous avez renseigné, si vous souhaiter supprimer un ou plusieurs éléments, appuyez sur le bouton Clear"
     }
     
     // MARK: - Functions
-    
-    
     // Function to handle adding ingredients
     @IBAction func addIngredient(_ sender: Any) {
         // Check if the search ingredient text field is empty
@@ -53,8 +61,7 @@ class SearchRecipeViewController: UIViewController {
     }
 
     
-    // this button is pressed when the user have write all his ingredients and he wants the recipe
-    // Function to search for recipes
+    // this button is pressed when the user have write all his ingredients and he wants the recipes
     @IBAction func searchForRecipeButton(_ sender: Any) {
         // Check if there are ingredients entered
         guard ingredients != "" else {

@@ -22,10 +22,25 @@ class SoughtRecipeViewController: UIViewController {
     @IBOutlet weak var ingredientsListLabel: UILabel!
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet var cguButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        makeFavoriteButton.isAccessibilityElement = true
+        makeFavoriteButton.accessibilityHint = "Ce bouton permet d'enregistrer une recette en favoris, vous pourrez retrouver la recette en appuyant sur le bouton Favorite avec la Loupe en image en bas de la vue"
+        timeToPrepareLabel.isAccessibilityElement = true
+        timeToPrepareLabel.accessibilityHint = "est le temps en minute qu'il faut pour la recette"
+        forXPeople.isAccessibilityElement = true
+        forXPeople.accessibilityHint = "Cela explique pour combien de personne est fait la recette"
+        getDirectionButton.isAccessibilityElement = true
+        getDirectionButton.accessibilityHint = "Ce bouton ouvrira la recette détaillée sur une page Safari"
+        ingredientsListLabel.isAccessibilityElement = true
+        ingredientsListLabel.accessibilityHint = "est la liste des ingrédients qu'il faut pour cette recette"
+        recipeNameLabel.isAccessibilityElement = true
+        recipeNameLabel.accessibilityHint = "est le nom de la recette"
+        cguButton.isAccessibilityElement = true
+        cguButton.accessibilityHint = "est le bouton qui vous permet de savoir ce que Reciplease fait de vos données"
         // Do any additional setup after loading the view.
         let ingredients = "\(recipe.recipe.ingredientLines)"
         let ingredientsList = ingredients
@@ -36,7 +51,16 @@ class SoughtRecipeViewController: UIViewController {
         recipeNameLabel.text = "\(recipe.recipe.label)"
         timeToPrepareLabel.text = "\(recipe.recipe.totalTime) min ⏲️"
         forXPeople.text = "for \(recipe.recipe.yield) 👨"
-        getImage()
+        Helper.getImage(from: recipe.recipe.image) { image in
+            if let image = image {
+                DispatchQueue.main.async {
+                    self.recipeImageView.image = image
+                }
+            } else {
+                Helper.presentAlert(from: self, title: "Cannot retrieve Image", message: "We cannot retrieve the image, check your internet connection.")
+            }
+        }
+
     }
     // MARK: - Functions
     
@@ -56,24 +80,6 @@ class SoughtRecipeViewController: UIViewController {
     @IBAction func didClickInformationButton(_ sender: Any) {
         // Present a privacy notice alert to the user
         Helper.presentAlert(from: self, title: "Privacy Notice", message: "We care about your privacy! Reciplease collects and stores data locally on your device to enhance your experience. This includes saving your favorite recipes for quick access. Rest assured, no data is shared externally. Your privacy is our priority!")
-    }
-
-    // Function to fetch and display the recipe image
-    func getImage() {
-        let url = URL(string: recipe.recipe.image)!
-        
-        // Request the recipe image data
-        AF.request(url).responseData { response in
-            switch response.result {
-            case .success(let data):
-                // If successful, display the image
-                self.recipeImageView.image = UIImage(data: data)
-                // Additional data processing can be done here
-            case .failure(let error):
-                // If request fails, print error message
-                print("Request error: \(error)")
-            }
-        }
     }
 
     // Function to save recipe as favorite
